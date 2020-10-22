@@ -131,7 +131,26 @@ namespace Nop.Web.Controllers
             var templateViewPath = _catalogModelFactory.PrepareCategoryTemplateViewPath(category.CategoryTemplateId);
             return View(templateViewPath, model);
         }
+        public virtual JsonResult CategoryLite(int categoryId)
+        {
+            CatalogPagingFilteringModel command = new CatalogPagingFilteringModel();
+            var category = _categoryService.GetCategoryById(categoryId);
+            //model
+            var model = _catalogModelFactory.PrepareCategoryModel(category, command);
+            //Linq query
 
+
+
+            //return linq statement to view
+
+
+
+            var result = new
+            {
+                index = model
+            };
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
         [ChildActionOnly]
         public virtual ActionResult CategoryNavigation(int currentCategoryId, int currentProductId)
         {

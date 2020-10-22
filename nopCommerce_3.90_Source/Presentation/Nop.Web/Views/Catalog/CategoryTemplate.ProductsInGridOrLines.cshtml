@@ -1,7 +1,6 @@
 ﻿@model CategoryModel
 @{
     Layout = "~/Views/Shared/_ColumnsTwo.cshtml";
-
     //title
     Html.AddTitleParts(!String.IsNullOrEmpty(Model.MetaTitle) ? Model.MetaTitle : Model.Name);
     //meta
@@ -19,10 +18,12 @@
 
     var breadcrumbDelimiter = EngineContext.Current.Resolve<CommonSettings>().BreadcrumbDelimiter;
 }
+
 @using Nop.Core.Domain.Common;
 @using Nop.Core.Domain.Seo;
 @using Nop.Core.Infrastructure;
 @using Nop.Web.Models.Catalog;
+
 @*category breadcrumb*@
 @section Breadcrumb
 {
@@ -54,10 +55,13 @@
         @Html.Widget("categorydetails_after_breadcrumb", Model.Id)
     }
 }
+
 <div class="page category-page">
     <div class="page-title">
         <h1>@Model.Name</h1>
     </div>
+    <input type="text" class="search-box-text" id="small-searchterms-category" autocomplete="off" name="q" placeholder="@T("Search.SearchBox.Tooltip")" />
+    <button type="button" class="btn btn-success" id="btnCategory">Search</button>
     <div class="page-body">
         @Html.Widget("categorydetails_top", Model.Id)
         @*description*@
@@ -156,3 +160,31 @@
         @Html.Widget("categorydetails_bottom", Model.Id)
     </div>
 </div>
+<script>
+    $(document).ready(function () {
+
+        $("#btnCategory").click(function () {
+            var requestData = {
+                categoryId: @(Model.Id),
+                searchtxt: $("#small-searchterms-category").val(),
+            };
+            console.log(requestData.searchtxt);
+            $.ajax({
+                url: "/Catalog/CategoryLite",
+                type: 'POST',
+                data: JSON.stringify(requestData),
+                dataType: 'json',
+                contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+                    console.log('ajax call check category product');
+                    console.log(data);
+                    
+                },
+                error: function () {
+                    alert("Error!");
+                }
+            });
+        });
+
+    });
+</script>
