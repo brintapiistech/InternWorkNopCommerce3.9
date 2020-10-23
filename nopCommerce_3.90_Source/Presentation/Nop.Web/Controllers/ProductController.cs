@@ -419,7 +419,7 @@ namespace Nop.Web.Controllers
             var model = _productModelFactory.PrepareProductOverviewModels(products, true, true, productThumbPictureSize).ToList();
             return PartialView(model);
         }
-<<<<<<< HEAD
+
         public virtual JsonResult Homepagelight()
         {
             var products = _productService.GetAllProductsDisplayedOnHomePage();
@@ -430,8 +430,8 @@ namespace Nop.Web.Controllers
             {
                 result = model
             };
-            return Json(result,JsonRequestBehavior.AllowGet);
-=======
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
         public virtual JsonResult HomepageProductsLite()
         {
             var products = _productService.GetAllProductsDisplayedOnHomePage();
@@ -449,7 +449,7 @@ namespace Nop.Web.Controllers
                 index = model
             };
             return Json(result, JsonRequestBehavior.AllowGet);
->>>>>>> 528da7c7170bf28987e40b7f5ff9b2d3444e30ee
+
         }
 
         #endregion

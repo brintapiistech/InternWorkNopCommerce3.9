@@ -132,25 +132,23 @@ namespace Nop.Web.Controllers
             var templateViewPath = _catalogModelFactory.PrepareCategoryTemplateViewPath(category.CategoryTemplateId);
             return View(templateViewPath, model);
         }
-<<<<<<< HEAD
+
         public virtual JsonResult Categorylite(int categoryId,string Search)
         {
             CatalogPagingFilteringModel cmd = new CatalogPagingFilteringModel();
-            var category = _categoryService.GetCategoryById(categoryId);
-      
-
-                      //model
+            var category = _categoryService.GetCategoryById(categoryId);    
+            //model
             var models = _catalogModelFactory.PrepareCategoryModel(category, cmd);
 
             //var itm = (from item in models
-            //            where item.sename == Search
-            //            select item).First();
-            //var mm = model.SeName == Search;
+            //           where item.sename == Search
+            //           select item).First();
+            ////var mm = model.SeName == Search;
             //var pp = from r in model where r.Sename = Search select r;
 
             var result = new
             {
-                result=models
+                result = models
             };
 
             //template
@@ -158,28 +156,7 @@ namespace Nop.Web.Controllers
             //return View(templateViewPath, model);
             return Json(result, JsonRequestBehavior.AllowGet);
         }
-=======
-        public virtual JsonResult CategoryLite(int categoryId)
-        {
-            CatalogPagingFilteringModel command = new CatalogPagingFilteringModel();
-            var category = _categoryService.GetCategoryById(categoryId);
-            //model
-            var model = _catalogModelFactory.PrepareCategoryModel(category, command);
-            //Linq query
 
-
->>>>>>> 528da7c7170bf28987e40b7f5ff9b2d3444e30ee
-
-            //return linq statement to view
-
-
-
-            var result = new
-            {
-                index = model
-            };
-            return Json(result, JsonRequestBehavior.AllowGet);
-        }
         [ChildActionOnly]
         public virtual ActionResult CategoryNavigation(int currentCategoryId, int currentProductId)
         {
@@ -203,7 +180,18 @@ namespace Nop.Web.Controllers
 
             return PartialView(model);
         }
-
+        public virtual JsonResult HomepageCategoriesLite(string searchtxt)
+        {
+            var model = _catalogModelFactory.PrepareHomepageCategoryModels();
+            var getHomepageProducts = model.Where(p=> p.Name.Contains(searchtxt));
+            //var products = model.Select(p => p.Products);
+            var index = new
+            {
+                result = getHomepageProducts,
+                //resultCheck = products
+            };
+            return Json(index,JsonRequestBehavior.AllowGet);
+        }
         #endregion
 
         #region Manufacturers
