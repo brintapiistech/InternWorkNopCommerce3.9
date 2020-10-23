@@ -71,3 +71,24 @@
         </script>
     }
 </div>
+@*<script>
+    $(document).ready(function () {
+       
+        $.ajax({
+            url: "/Catalog/CategoryLite",
+            type: 'POST',
+            //data: JSON.stringify(requestData),
+            dataType: 'json',
+            contentType: 'application/json; charset=utf-8',
+            success: function (data) {
+                console.log('ajax call check category product');
+                console.log(data);
+
+            },
+
+                error: function () {
+                    alert("Error!");
+                }
+            });
+    });
+</script>*@

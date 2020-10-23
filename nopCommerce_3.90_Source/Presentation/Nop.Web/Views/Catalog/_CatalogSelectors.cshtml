@@ -18,6 +18,17 @@
         </div>
     }
     @*sorting*@
+    @*@using (Html.BeginForm("", "", FormMethod.Get, new { }))
+    {
+
+        <div class="form-group">
+            <input type="text" ID="text_serch" CssClass="form-control  col-md-2 " placeholder="Search" />
+
+            <input type="submit" value="Search" class="btn btn-default" />
+
+        </div>
+
+    }*@
     @if (Model.AllowProductSorting)
     {
         <div class="product-sorting">

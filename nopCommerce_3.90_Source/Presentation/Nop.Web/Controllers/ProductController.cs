@@ -419,6 +419,18 @@ namespace Nop.Web.Controllers
             var model = _productModelFactory.PrepareProductOverviewModels(products, true, true, productThumbPictureSize).ToList();
             return PartialView(model);
         }
+        public virtual JsonResult Homepagelight()
+        {
+            var products = _productService.GetAllProductsDisplayedOnHomePage();
+
+
+            var model = _productModelFactory.PrepareProductOverviewModels(products, true, true).ToList();
+            var result = new
+            {
+                result = model
+            };
+            return Json(result,JsonRequestBehavior.AllowGet);
+        }
 
         #endregion
 

@@ -6,6 +6,7 @@ using Nop.Core.Domain.Catalog;
 using Nop.Core.Domain.Customers;
 using Nop.Core.Domain.Media;
 using Nop.Core.Domain.Vendors;
+using Nop.Services;
 using Nop.Services.Catalog;
 using Nop.Services.Common;
 using Nop.Services.Localization;
@@ -130,6 +131,31 @@ namespace Nop.Web.Controllers
             //template
             var templateViewPath = _catalogModelFactory.PrepareCategoryTemplateViewPath(category.CategoryTemplateId);
             return View(templateViewPath, model);
+        }
+        public virtual JsonResult Categorylite(int categoryId,string Search)
+        {
+            CatalogPagingFilteringModel cmd = new CatalogPagingFilteringModel();
+            var category = _categoryService.GetCategoryById(categoryId);
+      
+
+                      //model
+            var models = _catalogModelFactory.PrepareCategoryModel(category, cmd);
+
+            //var itm = (from item in models
+            //            where item.sename == Search
+            //            select item).First();
+            //var mm = model.SeName == Search;
+            //var pp = from r in model where r.Sename = Search select r;
+
+            var result = new
+            {
+                result=models
+            };
+
+            //template
+            //var templateViewPath = _catalogModelFactory.PrepareCategoryTemplateViewPath(category.CategoryTemplateId);
+            //return View(templateViewPath, model);
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
 
         [ChildActionOnly]

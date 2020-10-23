@@ -30,7 +30,7 @@
     </div>
     <div class="details">
         <h2 class="product-title">
-            <a href="@Url.RouteUrl("Product", new {SeName = Model.SeName})">@Model.Name</a>
+            <a href="@Url.RouteUrl("Product", new {SeName = Model.SeName})">@Model.Name ppp</a>
         </h2>
         @if (EngineContext.Current.Resolve<CatalogSettings>().ShowSkuOnCatalogPages && !string.IsNullOrEmpty(Model.Sku))
         {
