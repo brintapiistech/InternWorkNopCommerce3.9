@@ -1,3 +1,6 @@
+D:\Code_Interns\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Tests\Nop.Web.MVC.Tests\bin\Debug\EntityFramework.dll
+D:\Code_Interns\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Tests\Nop.Web.MVC.Tests\bin\Debug\de\Microsoft.Data.Edm.resources.dll
+D:\Code_Interns\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Tests\Nop.Web.MVC.Tests\bin\Debug\fr\System.Spatial.resources.dll
 D:\Code_Interns\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Tests\Nop.Web.MVC.Tests\bin\Debug\Nop.Web.MVC.Tests.dll.config
 D:\Code_Interns\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Tests\Nop.Web.MVC.Tests\bin\Debug\Nop.Web.MVC.Tests.dll
 D:\Code_Interns\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Tests\Nop.Web.MVC.Tests\bin\Debug\Nop.Web.MVC.Tests.pdb
@@ -30,7 +33,6 @@ D:\Code_Interns\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Tests\Nop.Web.M
 D:\Code_Interns\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Tests\Nop.Web.MVC.Tests\bin\Debug\RedLock.StrongName.dll
 D:\Code_Interns\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Tests\Nop.Web.MVC.Tests\bin\Debug\Autofac.Integration.Mvc.dll
 D:\Code_Interns\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Tests\Nop.Web.MVC.Tests\bin\Debug\Newtonsoft.Json.dll
-D:\Code_Interns\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Tests\Nop.Web.MVC.Tests\bin\Debug\EntityFramework.dll
 D:\Code_Interns\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Tests\Nop.Web.MVC.Tests\bin\Debug\System.Data.SqlServerCe.dll
 D:\Code_Interns\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Tests\Nop.Web.MVC.Tests\bin\Debug\MaxMind.GeoIP2.dll
 D:\Code_Interns\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Tests\Nop.Web.MVC.Tests\bin\Debug\Microsoft.WindowsAzure.Storage.dll
@@ -133,7 +135,6 @@ D:\Code_Interns\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Tests\Nop.Web.M
 D:\Code_Interns\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Tests\Nop.Web.MVC.Tests\bin\Debug\ru\Microsoft.Data.OData.resources.dll
 D:\Code_Interns\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Tests\Nop.Web.MVC.Tests\bin\Debug\zh-Hans\Microsoft.Data.OData.resources.dll
 D:\Code_Interns\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Tests\Nop.Web.MVC.Tests\bin\Debug\zh-Hant\Microsoft.Data.OData.resources.dll
-D:\Code_Interns\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Tests\Nop.Web.MVC.Tests\bin\Debug\de\Microsoft.Data.Edm.resources.dll
 D:\Code_Interns\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Tests\Nop.Web.MVC.Tests\bin\Debug\es\Microsoft.Data.Edm.resources.dll
 D:\Code_Interns\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Tests\Nop.Web.MVC.Tests\bin\Debug\fr\Microsoft.Data.Edm.resources.dll
 D:\Code_Interns\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Tests\Nop.Web.MVC.Tests\bin\Debug\it\Microsoft.Data.Edm.resources.dll
@@ -144,7 +145,6 @@ D:\Code_Interns\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Tests\Nop.Web.M
 D:\Code_Interns\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Tests\Nop.Web.MVC.Tests\bin\Debug\zh-Hant\Microsoft.Data.Edm.resources.dll
 D:\Code_Interns\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Tests\Nop.Web.MVC.Tests\bin\Debug\de\System.Spatial.resources.dll
 D:\Code_Interns\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Tests\Nop.Web.MVC.Tests\bin\Debug\es\System.Spatial.resources.dll
-D:\Code_Interns\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Tests\Nop.Web.MVC.Tests\bin\Debug\fr\System.Spatial.resources.dll
 D:\Code_Interns\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Tests\Nop.Web.MVC.Tests\bin\Debug\it\System.Spatial.resources.dll
 D:\Code_Interns\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Tests\Nop.Web.MVC.Tests\bin\Debug\ja\System.Spatial.resources.dll
 D:\Code_Interns\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Tests\Nop.Web.MVC.Tests\bin\Debug\ko\System.Spatial.resources.dll

@@ -419,6 +419,7 @@ namespace Nop.Web.Controllers
             var model = _productModelFactory.PrepareProductOverviewModels(products, true, true, productThumbPictureSize).ToList();
             return PartialView(model);
         }
+<<<<<<< HEAD
         public virtual JsonResult Homepagelight()
         {
             var products = _productService.GetAllProductsDisplayedOnHomePage();
@@ -430,6 +431,25 @@ namespace Nop.Web.Controllers
                 result = model
             };
             return Json(result,JsonRequestBehavior.AllowGet);
+=======
+        public virtual JsonResult HomepageProductsLite()
+        {
+            var products = _productService.GetAllProductsDisplayedOnHomePage();
+            ////ACL and store mapping
+            //products = products.Where(p => _aclService.Authorize(p) && _storeMappingService.Authorize(p)).ToList();
+            ////availability dates
+            //products = products.Where(p => p.IsAvailable()).ToList();
+
+            //if (!products.Any())
+            //    return Content("");
+
+            var model = _productModelFactory.PrepareProductOverviewModels(products, true, true, 1).ToList();
+            var result = new
+            {
+                index = model
+            };
+            return Json(result, JsonRequestBehavior.AllowGet);
+>>>>>>> 528da7c7170bf28987e40b7f5ff9b2d3444e30ee
         }
 
         #endregion

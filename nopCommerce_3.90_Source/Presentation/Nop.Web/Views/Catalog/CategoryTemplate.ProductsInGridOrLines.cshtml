@@ -18,10 +18,12 @@
 
     var breadcrumbDelimiter = EngineContext.Current.Resolve<CommonSettings>().BreadcrumbDelimiter;
 }
+
 @using Nop.Core.Domain.Common;
 @using Nop.Core.Domain.Seo;
 @using Nop.Core.Infrastructure;
 @using Nop.Web.Models.Catalog;
+
 @*category breadcrumb*@
 @section Breadcrumb
 {
@@ -53,11 +55,13 @@
         @Html.Widget("categorydetails_after_breadcrumb", Model.Id)
     }
 }
+
 <div class="page category-page">
     <div class="page-title">
         <h1>@Model.Name</h1>
     </div>
     <input type="text" class="search-box-text" id="small-searchterms-category" autocomplete="off" name="q" placeholder="@T("Search.SearchBox.Tooltip")" />
+<<<<<<< HEAD
     <input type="button" class="btn btn-info" value="Search" id="btnCategory">
 
 
@@ -73,6 +77,9 @@
 
         }*@
 
+=======
+    <button type="button" class="btn btn-success" id="btnCategory">Search</button>
+>>>>>>> 528da7c7170bf28987e40b7f5ff9b2d3444e30ee
     <div class="page-body">
         @Html.Widget("categorydetails_top", Model.Id)
         @*description*@
@@ -171,6 +178,7 @@
         @Html.Widget("categorydetails_bottom", Model.Id)
     </div>
 </div>
+<<<<<<< HEAD
 @*<script>
     $(document).ready(function () {
         $("#search").click(function () {
@@ -209,6 +217,19 @@
             console.log(requestData.Search);
             $.ajax({
                 url: "/Catalog/Categorylite",
+=======
+<script>
+    $(document).ready(function () {
+
+        $("#btnCategory").click(function () {
+            var requestData = {
+                categoryId: @(Model.Id),
+                searchtxt: $("#small-searchterms-category").val(),
+            };
+            console.log(requestData.searchtxt);
+            $.ajax({
+                url: "/Catalog/CategoryLite",
+>>>>>>> 528da7c7170bf28987e40b7f5ff9b2d3444e30ee
                 type: 'POST',
                 data: JSON.stringify(requestData),
                 dataType: 'json',
@@ -216,12 +237,22 @@
                 success: function (data) {
                     console.log('ajax call check category product');
                     console.log(data);
+<<<<<<< HEAD
 
+=======
+                    
+>>>>>>> 528da7c7170bf28987e40b7f5ff9b2d3444e30ee
                 },
                 error: function () {
                     alert("Error!");
                 }
             });
         });
+<<<<<<< HEAD
     });
 </script> 
+=======
+
+    });
+</script>
+>>>>>>> 528da7c7170bf28987e40b7f5ff9b2d3444e30ee

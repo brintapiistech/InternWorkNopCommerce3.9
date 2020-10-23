@@ -1,3 +1,5 @@
+D:\Code_Interns\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Libraries\Nop.Services\bin\Debug\EPPlus.xml
+D:\Code_Interns\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Libraries\Nop.Services\bin\Debug\EntityFramework.xml
 D:\Code_Interns\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Libraries\Nop.Services\bin\Debug\Nop.Services.dll.config
 D:\Code_Interns\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Libraries\Nop.Services\bin\Debug\Nop.Services.dll
 D:\Code_Interns\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Libraries\Nop.Services\bin\Debug\Nop.Services.pdb
@@ -41,7 +43,6 @@ D:\Code_Interns\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Libraries\Nop.S
 D:\Code_Interns\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Libraries\Nop.Services\bin\Debug\Nop.Data.pdb
 D:\Code_Interns\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Libraries\Nop.Services\bin\Debug\Nop.Data.dll.config
 D:\Code_Interns\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Libraries\Nop.Services\bin\Debug\Autofac.xml
-D:\Code_Interns\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Libraries\Nop.Services\bin\Debug\EPPlus.xml
 D:\Code_Interns\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Libraries\Nop.Services\bin\Debug\ImageResizer.xml
 D:\Code_Interns\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Libraries\Nop.Services\bin\Debug\ImageResizer.Plugins.PrettyGifs.xml
 D:\Code_Interns\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Libraries\Nop.Services\bin\Debug\itextsharp.xml
@@ -67,7 +68,6 @@ D:\Code_Interns\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Libraries\Nop.S
 D:\Code_Interns\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Libraries\Nop.Services\bin\Debug\AutoMapper.xml
 D:\Code_Interns\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Libraries\Nop.Services\bin\Debug\StackExchange.Redis.StrongName.xml
 D:\Code_Interns\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Libraries\Nop.Services\bin\Debug\Autofac.Integration.Mvc.xml
-D:\Code_Interns\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Libraries\Nop.Services\bin\Debug\EntityFramework.xml
 D:\Code_Interns\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Libraries\Nop.Services\bin\Debug\de\Microsoft.Data.Edm.resources.dll
 D:\Code_Interns\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Libraries\Nop.Services\bin\Debug\es\Microsoft.Data.Edm.resources.dll
 D:\Code_Interns\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Libraries\Nop.Services\bin\Debug\fr\Microsoft.Data.Edm.resources.dll
