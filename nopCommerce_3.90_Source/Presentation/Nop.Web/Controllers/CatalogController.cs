@@ -133,13 +133,15 @@ namespace Nop.Web.Controllers
             return View(templateViewPath, model);
         }
 
-        public virtual JsonResult Categorylite(int categoryId,string Search)
+        public virtual JsonResult Categorylite(int categoryId,string searchtxt)
         {
             CatalogPagingFilteringModel cmd = new CatalogPagingFilteringModel();
-            var category = _categoryService.GetCategoryById(categoryId);    
+            var category = _categoryService.GetCategoryById(categoryId);
             //model
+            var ct = category.Name == searchtxt;
             var models = _catalogModelFactory.PrepareCategoryModel(category, cmd);
-
+            var getdata = models.Products.Where(p => p.Name.Contains(searchtxt));
+           
             //var itm = (from item in models
             //           where item.sename == Search
             //           select item).First();
@@ -148,7 +150,7 @@ namespace Nop.Web.Controllers
 
             var result = new
             {
-                result = models
+                result = getdata
             };
 
             //template
@@ -183,7 +185,7 @@ namespace Nop.Web.Controllers
         public virtual JsonResult HomepageCategoriesLite(string searchtxt)
         {
             var model = _catalogModelFactory.PrepareHomepageCategoryModels();
-            var getHomepageProducts = model.Where(p=> p.Name.Contains(searchtxt));
+            var getHomepageProducts = model.Where(p => p.Name.Contains(searchtxt));
             //var products = model.Select(p => p.Products);
             var index = new
             {

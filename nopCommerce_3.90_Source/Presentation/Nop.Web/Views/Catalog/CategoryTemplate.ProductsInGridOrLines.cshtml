@@ -187,7 +187,7 @@
             //    }
             //});
             $.ajax({
-                url: "/Catalog/HomepageCategoriesLite",
+                url: "/Catalog/Categorylite",
                 type: 'POST',
                 data: JSON.stringify(requestData),
                 dataType: 'json',
@@ -195,15 +195,47 @@
                 success: function (data) {
                     console.log('ajax call check home category product');
                     console.log(data);
-                    console.log(data.result[0].Name);
+                    //console.log(data.result[0].Name);
+                    //console.log(data.result[0].SeName);
+                    //console.log(data.result[0].PictureModel);
+                    //console.log(data.result[0].PictureModel.ImageUrl);
+                    //console.log(data.result[0].PictureModel.AlternateText);
+                    //console.log(data.result[0].PictureModel.Title);
+                    //var altr = data.result[0].PictureModel.AlternateText;
+                    //$(".item-grid").html("<div class=" + "productClass" + ">" + '<img alt=' + '"' + altr + '"' + 'src=' + '"' + data.result[0].PictureModel.ImageUrl + '"' + 'title=' + '"' + data.result[0].PictureModel.Title + '"' + ">" + "</>"
+                    //    + "<div class=" + "description" + ">" + "Name:" + "<br>" + data.result[0].Name + "<br>" + "Se-Name:" + "<br>" + data.result[0].SeName + "</div>" + "</div>");
+
+                    // Using for category_product
+                    //var l = data.result.length;
+                    //console.log(l);
+                    //for (var i = 0; i < l; i++) {
+                    //    console.log(data.result[i].Name);
+                    //    console.log(data.result[i].SeName);
+                    //    console.log(data.result[i].DefaultPictureModel);
+                    //    console.log(data.result[i].DefaultPictureModel.AlternateText);
+                    //    console.log(data.result[i].DefaultPictureModel.ImageUrl);
+                    //    console.log(data.result[i].DefaultPictureModel.Title);
+                    //    console.log(data.result[i].Id);
+
+                    //    var altr = data.result[i].DefaultPictureModel.AlternateText;
+
+                    //    $(".product-grid").html("<div class=" + "item-box" + ">" + "<div class=" + "product-item" + " data-productid=" + data.result[i].Id + ">" + "<div class=" + "picture" + ">" + '<img alt=' + '"' + altr + '"' + 'src=' + '"' + data.result[i].DefaultPictureModel.ImageUrl + '"' + 'title=' + '"' + data.result[i].DefaultPictureModel.Title + '"' + ">" + "</div>" + "</div>" + "</div>");
+
+                    //}
+                     console.log(data.result[0].Name);
                     console.log(data.result[0].SeName);
-                    console.log(data.result[0].PictureModel);
-                    console.log(data.result[0].PictureModel.ImageUrl);
-                    console.log(data.result[0].PictureModel.AlternateText);
-                    console.log(data.result[0].PictureModel.Title);
-                    var altr = data.result[0].PictureModel.AlternateText;
-                    $(".item-grid").html("<div class=" + "productClass" + ">" + '<img alt=' + '"' + altr + '"' + 'src=' + '"' + data.result[0].PictureModel.ImageUrl + '"' + 'title=' + '"' + data.result[0].PictureModel.Title + '"' + ">" + "</>"
-                        + "<div class=" + "description" + ">" + "Name:" + "<br>" + data.result[0].Name + "<br>" + "Se-Name:" + "<br>" + data.result[0].SeName + "</div>" + "</div>");
+                    console.log(data.result[0].DefaultPictureModel);
+                    console.log(data.result[0].DefaultPictureModel.AlternateText);
+                    console.log(data.result[0].DefaultPictureModel.ImageUrl);
+                    console.log(data.result[0].DefaultPictureModel.Title);
+                    console.log(data.result[0].Id);
+     
+                    var altr = data.result[0].DefaultPictureModel.AlternateText;
+
+                    $(".item-grid").html("<div class=" + "item-box" + ">" + "<div class=" + "product-item" + " data-productid=" + data.result[0].Id + ">" + "<div class=" + "picture" +">" + '<img alt=' + '"' + altr + '"' + 'src=' + '"' + data.result[0].DefaultPictureModel.ImageUrl + '"' + 'title=' + '"' + data.result[0].DefaultPictureModel.Title + '"' + ">" +  "</div>" + "</div>" + "</div>");
+
+               
+       
                 },
                 error: function () {
                     alert("Error!");

@@ -128,5 +128,10 @@ namespace Nop.Core.Domain.Catalog
             get { return _appliedDiscounts ?? (_appliedDiscounts = new List<Discount>()); }
             protected set { _appliedDiscounts = value; }
         }
+
+        public object Where(Func<object, object> p)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
