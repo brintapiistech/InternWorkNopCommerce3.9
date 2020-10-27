@@ -1,2 +1,2 @@
 DataProvider: sqlserver
-DataConnectionString: Data Source=DESKTOP-R30ACS2\SQLEXPRESS01;Initial Catalog=NopCommerce3.90_Intern;Integrated Security=True;Persist Security Info=False
+DataConnectionString: Data Source=DESKTOP-TC8GA0P\SQLEXPRESS;Initial Catalog=NopCommerce3.90_Intern;Integrated Security=True;Persist Security Info=False
