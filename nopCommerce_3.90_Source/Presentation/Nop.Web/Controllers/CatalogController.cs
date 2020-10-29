@@ -133,7 +133,7 @@ namespace Nop.Web.Controllers
             return View(templateViewPath, model);
         }
 
-        public virtual JsonResult Categorylite(int categoryId,string searchtxt)
+        public virtual JsonResult Categorylite(int categoryId, string searchtxt)
         {
             CatalogPagingFilteringModel cmd = new CatalogPagingFilteringModel();
             var category = _categoryService.GetCategoryById(categoryId);

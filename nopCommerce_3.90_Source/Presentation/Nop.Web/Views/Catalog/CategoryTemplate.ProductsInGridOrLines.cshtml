@@ -23,6 +23,8 @@
 @using Nop.Core.Domain.Seo;
 @using Nop.Core.Infrastructure;
 @using Nop.Web.Models.Catalog;
+@using Nop.Core.Domain.Orders
+
 
 @*category breadcrumb*@
 @section Breadcrumb
@@ -126,12 +128,12 @@
         }
         @Html.Widget("categorydetails_before_filters", Model.Id)
         <div class="product-filters">
-            @*filtering*@
+
             @if (Model.PagingFilteringContext.PriceRangeFilter.Enabled)
             {
                 @Html.Partial("_FilterPriceBox", Model.PagingFilteringContext.PriceRangeFilter, new ViewDataDictionary())
             }
-            @*filtering*@
+
             @if (Model.PagingFilteringContext.SpecificationFilter.Enabled)
             {
                 @Html.Partial("_FilterSpecsBox", Model.PagingFilteringContext.SpecificationFilter, new ViewDataDictionary())
@@ -198,12 +200,14 @@
                     console.log(data.result);
 
                     //console.log(data.result.length);
+
                     var datalength = data.result.length;
                     var tmplt = "";
                     var ratingPercent = 0;
                     for (var i = 0; i < datalength; i++) {
 
                         var res = data.result[i];
+
                         //console.log(res.DefaultPictureModel.ImageUrl);
                         //alert('1323')
                         var ck = res.ReviewOverviewModel.RatingSum;
@@ -212,7 +216,7 @@
                         if (ck != null && ck != 0 && ck != "undefine") {
                             console.log(res.ReviewOverviewModel.RatingSum);
                             console.log(res.ReviewOverviewModel.TotalReviews);
-                            
+
                             ratingPercent = ((ck * 100) / totalreview) / 5;
 
 
@@ -238,10 +242,9 @@
                             + '<div class=' + 'add-info' + '>'
                             + '<div class=' + 'prices' + '>' + '<span class=price actual-price>' + res.ProductPrice.Price + '</span>'
                             + '</div>'
-                            + '<div class=buttons>' + '<input type=' + 'button' + ' ' + 'value=' + '"' + 'Add to chart' + '"' + 'class=' + '"' + 'button-2 product-box-add-to-cart-button' + '"' + 'onclick=' + '"' + 'addctohart();' + '"' + '>'
+                            + '<div class=buttons>' + '<input type=' + 'button' + ' ' + 'value=' + '"' + 'Add to chart' + '"' + 'class=' + '"' + 'button-2 product-box-add-to-cart-button' + '"' + 'onclick=' + '"' + 'AddToCartFunc(2);' + '"' + '>'
                             + '</div>'
                             + '</div>'
-
                             + '</div > '
                             + '</div>'
                             + '</div>';
@@ -314,6 +317,31 @@
         //location.href = ""
 
     }
+
+        var AddToCartFunc = function (pId) {
+            var requestData = {
+                productId: pId,
+                shoppingCartTypeId: 1,
+                quantity: 1,
+                forceredirection: false,
+            };
+            $.ajax({
+                url: "/ShoppingCart/AddProductToCart_Catalog",
+                type: 'POST',
+                data: JSON.stringify(requestData),
+                dataType: 'json',
+                contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+                    console.log('ajax call add to cart');
+                    console.log('added to cart');
+                    alert('added to cart');
+                },
+                error: function () {
+                    alert("Error!");
+                }
+            });
+        }
+
 </script>
 
 
