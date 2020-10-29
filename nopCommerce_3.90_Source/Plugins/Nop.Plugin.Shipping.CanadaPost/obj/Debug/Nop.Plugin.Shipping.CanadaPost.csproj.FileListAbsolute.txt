@@ -20,3 +20,13 @@ D:\Code_Interns\InternWorkNopCommerce_3.90\InternWorkNopCommerce3.9\nopCommerce_
 D:\Code_Interns\InternWorkNopCommerce_3.90\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Plugins\Nop.Plugin.Shipping.CanadaPost\obj\Debug\Nop.Plugin.Shipping.CanadaPost.csproj.CoreCompileInputs.cache
 D:\Code_Interns\InternWorkNopCommerce_3.90\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Plugins\Nop.Plugin.Shipping.CanadaPost\obj\Debug\Nop.Plugin.Shipping.CanadaPost.dll
 D:\Code_Interns\InternWorkNopCommerce_3.90\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Plugins\Nop.Plugin.Shipping.CanadaPost\obj\Debug\Nop.Plugin.Shipping.CanadaPost.pdb
+G:\Intern\Git_Intern_Work\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Presentation\Nop.Web\Plugins\Shipping.CanadaPost\Views\Configure.cshtml
+G:\Intern\Git_Intern_Work\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Presentation\Nop.Web\Plugins\Shipping.CanadaPost\web.config
+G:\Intern\Git_Intern_Work\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Presentation\Nop.Web\Plugins\Shipping.CanadaPost\Description.txt
+G:\Intern\Git_Intern_Work\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Presentation\Nop.Web\Plugins\Shipping.CanadaPost\logo.jpg
+G:\Intern\Git_Intern_Work\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Presentation\Nop.Web\Plugins\Shipping.CanadaPost\Nop.Plugin.Shipping.CanadaPost.dll.config
+G:\Intern\Git_Intern_Work\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Presentation\Nop.Web\Plugins\Shipping.CanadaPost\Nop.Plugin.Shipping.CanadaPost.dll
+G:\Intern\Git_Intern_Work\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Presentation\Nop.Web\Plugins\Shipping.CanadaPost\Nop.Plugin.Shipping.CanadaPost.pdb
+G:\Intern\Git_Intern_Work\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Plugins\Nop.Plugin.Shipping.CanadaPost\obj\Debug\Nop.Plugin.Shipping.CanadaPost.csproj.CoreCompileInputs.cache
+G:\Intern\Git_Intern_Work\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Plugins\Nop.Plugin.Shipping.CanadaPost\obj\Debug\Nop.Plugin.Shipping.CanadaPost.dll
+G:\Intern\Git_Intern_Work\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Plugins\Nop.Plugin.Shipping.CanadaPost\obj\Debug\Nop.Plugin.Shipping.CanadaPost.pdb

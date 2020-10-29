@@ -140,7 +140,8 @@ namespace Nop.Web.Controllers
             //model
             var ct = category.Name == searchtxt;
             var models = _catalogModelFactory.PrepareCategoryModel(category, cmd);
-            var getdata = models.Products.Where(p => p.Name.Contains(searchtxt));
+            string lowerstr2 = searchtxt.ToLower();
+            var getdata = models.Products.Where(p => p.Name.ToLower().Contains(lowerstr2.ToLower()));
            
             //var itm = (from item in models
             //           where item.sename == Search

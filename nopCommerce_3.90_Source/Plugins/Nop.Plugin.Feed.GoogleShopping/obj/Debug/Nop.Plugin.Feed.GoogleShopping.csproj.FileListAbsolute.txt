@@ -23,3 +23,15 @@ D:\Code_Interns\InternWorkNopCommerce_3.90\InternWorkNopCommerce3.9\nopCommerce_
 D:\Code_Interns\InternWorkNopCommerce_3.90\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Plugins\Nop.Plugin.Feed.GoogleShopping\obj\Debug\Nop.Plugin.Feed.GoogleShopping.csproj.CoreCompileInputs.cache
 D:\Code_Interns\InternWorkNopCommerce_3.90\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Plugins\Nop.Plugin.Feed.GoogleShopping\obj\Debug\Nop.Plugin.Feed.GoogleShopping.dll
 D:\Code_Interns\InternWorkNopCommerce_3.90\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Plugins\Nop.Plugin.Feed.GoogleShopping\obj\Debug\Nop.Plugin.Feed.GoogleShopping.pdb
+G:\Intern\Git_Intern_Work\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Presentation\Nop.Web\Plugins\Feed.GoogleShopping\Content\styles.css
+G:\Intern\Git_Intern_Work\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Presentation\Nop.Web\Plugins\Feed.GoogleShopping\Views\Configure.cshtml
+G:\Intern\Git_Intern_Work\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Presentation\Nop.Web\Plugins\Feed.GoogleShopping\Description.txt
+G:\Intern\Git_Intern_Work\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Presentation\Nop.Web\Plugins\Feed.GoogleShopping\web.config
+G:\Intern\Git_Intern_Work\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Presentation\Nop.Web\Plugins\Feed.GoogleShopping\logo.jpg
+G:\Intern\Git_Intern_Work\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Presentation\Nop.Web\Plugins\Feed.GoogleShopping\Nop.Plugin.Feed.GoogleShopping.dll.config
+G:\Intern\Git_Intern_Work\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Presentation\Nop.Web\Plugins\Feed.GoogleShopping\Nop.Plugin.Feed.GoogleShopping.dll
+G:\Intern\Git_Intern_Work\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Presentation\Nop.Web\Plugins\Feed.GoogleShopping\Nop.Plugin.Feed.GoogleShopping.pdb
+G:\Intern\Git_Intern_Work\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Plugins\Nop.Plugin.Feed.GoogleShopping\obj\Debug\Nop.Plugin.Feed.GoogleShopping.csproj.App.config
+G:\Intern\Git_Intern_Work\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Plugins\Nop.Plugin.Feed.GoogleShopping\obj\Debug\Nop.Plugin.Feed.GoogleShopping.csproj.CoreCompileInputs.cache
+G:\Intern\Git_Intern_Work\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Plugins\Nop.Plugin.Feed.GoogleShopping\obj\Debug\Nop.Plugin.Feed.GoogleShopping.dll
+G:\Intern\Git_Intern_Work\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Plugins\Nop.Plugin.Feed.GoogleShopping\obj\Debug\Nop.Plugin.Feed.GoogleShopping.pdb

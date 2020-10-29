@@ -20,3 +20,14 @@ D:\Code_Interns\InternWorkNopCommerce_3.90\InternWorkNopCommerce3.9\nopCommerce_
 D:\Code_Interns\InternWorkNopCommerce_3.90\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Plugins\Nop.Plugin.Widgets.GoogleAnalytics\obj\Debug\Nop.Plugin.Widgets.GoogleAnalytics.csproj.CoreCompileInputs.cache
 D:\Code_Interns\InternWorkNopCommerce_3.90\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Plugins\Nop.Plugin.Widgets.GoogleAnalytics\obj\Debug\Nop.Plugin.Widgets.GoogleAnalytics.dll
 D:\Code_Interns\InternWorkNopCommerce_3.90\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Plugins\Nop.Plugin.Widgets.GoogleAnalytics\obj\Debug\Nop.Plugin.Widgets.GoogleAnalytics.pdb
+G:\Intern\Git_Intern_Work\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Presentation\Nop.Web\Plugins\Widgets.GoogleAnalytics\Views\Configure.cshtml
+G:\Intern\Git_Intern_Work\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Presentation\Nop.Web\Plugins\Widgets.GoogleAnalytics\web.config
+G:\Intern\Git_Intern_Work\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Presentation\Nop.Web\Plugins\Widgets.GoogleAnalytics\Description.txt
+G:\Intern\Git_Intern_Work\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Presentation\Nop.Web\Plugins\Widgets.GoogleAnalytics\logo.jpg
+G:\Intern\Git_Intern_Work\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Presentation\Nop.Web\Plugins\Widgets.GoogleAnalytics\Nop.Plugin.Widgets.GoogleAnalytics.dll.config
+G:\Intern\Git_Intern_Work\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Presentation\Nop.Web\Plugins\Widgets.GoogleAnalytics\Nop.Plugin.Widgets.GoogleAnalytics.dll
+G:\Intern\Git_Intern_Work\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Presentation\Nop.Web\Plugins\Widgets.GoogleAnalytics\Nop.Plugin.Widgets.GoogleAnalytics.pdb
+G:\Intern\Git_Intern_Work\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Plugins\Nop.Plugin.Widgets.GoogleAnalytics\obj\Debug\Nop.Plugin.Widgets.GoogleAnalytics.csproj.App.config
+G:\Intern\Git_Intern_Work\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Plugins\Nop.Plugin.Widgets.GoogleAnalytics\obj\Debug\Nop.Plugin.Widgets.GoogleAnalytics.csproj.CoreCompileInputs.cache
+G:\Intern\Git_Intern_Work\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Plugins\Nop.Plugin.Widgets.GoogleAnalytics\obj\Debug\Nop.Plugin.Widgets.GoogleAnalytics.dll
+G:\Intern\Git_Intern_Work\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Plugins\Nop.Plugin.Widgets.GoogleAnalytics\obj\Debug\Nop.Plugin.Widgets.GoogleAnalytics.pdb

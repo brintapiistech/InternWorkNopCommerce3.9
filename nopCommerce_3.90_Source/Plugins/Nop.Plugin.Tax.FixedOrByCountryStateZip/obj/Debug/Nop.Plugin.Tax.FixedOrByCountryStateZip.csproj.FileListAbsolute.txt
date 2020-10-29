@@ -24,3 +24,17 @@ D:\Code_Interns\InternWorkNopCommerce_3.90\InternWorkNopCommerce3.9\nopCommerce_
 D:\Code_Interns\InternWorkNopCommerce_3.90\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Plugins\Nop.Plugin.Tax.FixedOrByCountryStateZip\obj\Debug\Nop.Plugin.Tax.FixedOrByCountryStateZip.csproj.CoreCompileInputs.cache
 D:\Code_Interns\InternWorkNopCommerce_3.90\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Plugins\Nop.Plugin.Tax.FixedOrByCountryStateZip\obj\Debug\Nop.Plugin.Tax.FixedOrByCountryStateZip.dll
 D:\Code_Interns\InternWorkNopCommerce_3.90\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Plugins\Nop.Plugin.Tax.FixedOrByCountryStateZip\obj\Debug\Nop.Plugin.Tax.FixedOrByCountryStateZip.pdb
+G:\Intern\Git_Intern_Work\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Presentation\Nop.Web\Plugins\Tax.FixedOrByCountryStateZip\Views\_CountryStateZip.cshtml
+G:\Intern\Git_Intern_Work\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Presentation\Nop.Web\Plugins\Tax.FixedOrByCountryStateZip\Description.txt
+G:\Intern\Git_Intern_Work\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Presentation\Nop.Web\Plugins\Tax.FixedOrByCountryStateZip\web.config
+G:\Intern\Git_Intern_Work\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Presentation\Nop.Web\Plugins\Tax.FixedOrByCountryStateZip\Views\_FixedRate.cshtml
+G:\Intern\Git_Intern_Work\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Presentation\Nop.Web\Plugins\Tax.FixedOrByCountryStateZip\Views\Configure.cshtml
+G:\Intern\Git_Intern_Work\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Presentation\Nop.Web\Plugins\Tax.FixedOrByCountryStateZip\logo.jpg
+G:\Intern\Git_Intern_Work\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Presentation\Nop.Web\Plugins\Tax.FixedOrByCountryStateZip\Nop.Plugin.Tax.FixedOrByCountryStateZip.dll.config
+G:\Intern\Git_Intern_Work\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Presentation\Nop.Web\Plugins\Tax.FixedOrByCountryStateZip\Nop.Plugin.Tax.FixedOrByCountryStateZip.dll
+G:\Intern\Git_Intern_Work\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Presentation\Nop.Web\Plugins\Tax.FixedOrByCountryStateZip\Nop.Plugin.Tax.FixedOrByCountryStateZip.pdb
+G:\Intern\Git_Intern_Work\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Plugins\Nop.Plugin.Tax.FixedOrByCountryStateZip\obj\Debug\Nop.Plugin.Tax.FixedOrByCountryStateZip.csproj.App.config
+G:\Intern\Git_Intern_Work\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Plugins\Nop.Plugin.Tax.FixedOrByCountryStateZip\obj\Debug\Nop.Plugin.Tax.FixedOrByCountryStateZip.csprojAssemblyReference.cache
+G:\Intern\Git_Intern_Work\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Plugins\Nop.Plugin.Tax.FixedOrByCountryStateZip\obj\Debug\Nop.Plugin.Tax.FixedOrByCountryStateZip.csproj.CoreCompileInputs.cache
+G:\Intern\Git_Intern_Work\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Plugins\Nop.Plugin.Tax.FixedOrByCountryStateZip\obj\Debug\Nop.Plugin.Tax.FixedOrByCountryStateZip.dll
+G:\Intern\Git_Intern_Work\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Plugins\Nop.Plugin.Tax.FixedOrByCountryStateZip\obj\Debug\Nop.Plugin.Tax.FixedOrByCountryStateZip.pdb
