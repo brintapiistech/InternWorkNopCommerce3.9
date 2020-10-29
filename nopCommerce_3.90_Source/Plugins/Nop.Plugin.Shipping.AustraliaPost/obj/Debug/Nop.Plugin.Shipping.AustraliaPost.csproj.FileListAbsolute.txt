@@ -22,3 +22,15 @@ D:\Code_Interns\InternWorkNopCommerce_3.90\InternWorkNopCommerce3.9\nopCommerce_
 D:\Code_Interns\InternWorkNopCommerce_3.90\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Plugins\Nop.Plugin.Shipping.AustraliaPost\obj\Debug\Nop.Plugin.Shipping.AustraliaPost.csproj.CoreCompileInputs.cache
 D:\Code_Interns\InternWorkNopCommerce_3.90\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Plugins\Nop.Plugin.Shipping.AustraliaPost\obj\Debug\Nop.Plugin.Shipping.AustraliaPost.dll
 D:\Code_Interns\InternWorkNopCommerce_3.90\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Plugins\Nop.Plugin.Shipping.AustraliaPost\obj\Debug\Nop.Plugin.Shipping.AustraliaPost.pdb
+G:\Intern\Git_Intern_Work\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Presentation\Nop.Web\Plugins\Shipping.AustraliaPost\Views\Configure.cshtml
+G:\Intern\Git_Intern_Work\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Presentation\Nop.Web\Plugins\Shipping.AustraliaPost\Description.txt
+G:\Intern\Git_Intern_Work\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Presentation\Nop.Web\Plugins\Shipping.AustraliaPost\web.config
+G:\Intern\Git_Intern_Work\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Presentation\Nop.Web\Plugins\Shipping.AustraliaPost\logo.jpg
+G:\Intern\Git_Intern_Work\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Presentation\Nop.Web\Plugins\Shipping.AustraliaPost\Nop.Plugin.Shipping.AustraliaPost.dll.config
+G:\Intern\Git_Intern_Work\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Presentation\Nop.Web\Plugins\Shipping.AustraliaPost\Nop.Plugin.Shipping.AustraliaPost.dll
+G:\Intern\Git_Intern_Work\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Presentation\Nop.Web\Plugins\Shipping.AustraliaPost\Nop.Plugin.Shipping.AustraliaPost.pdb
+G:\Intern\Git_Intern_Work\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Plugins\Nop.Plugin.Shipping.AustraliaPost\obj\Debug\Nop.Plugin.Shipping.AustraliaPost.csproj.App.config
+G:\Intern\Git_Intern_Work\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Plugins\Nop.Plugin.Shipping.AustraliaPost\obj\Debug\Nop.Plugin.Shipping.AustraliaPost.csprojAssemblyReference.cache
+G:\Intern\Git_Intern_Work\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Plugins\Nop.Plugin.Shipping.AustraliaPost\obj\Debug\Nop.Plugin.Shipping.AustraliaPost.csproj.CoreCompileInputs.cache
+G:\Intern\Git_Intern_Work\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Plugins\Nop.Plugin.Shipping.AustraliaPost\obj\Debug\Nop.Plugin.Shipping.AustraliaPost.dll
+G:\Intern\Git_Intern_Work\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Plugins\Nop.Plugin.Shipping.AustraliaPost\obj\Debug\Nop.Plugin.Shipping.AustraliaPost.pdb

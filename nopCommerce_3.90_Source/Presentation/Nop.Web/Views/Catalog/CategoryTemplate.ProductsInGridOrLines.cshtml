@@ -166,6 +166,7 @@
 </div>
 
 <script>
+
     $(document).ready(function () {
         $("#search").click(function () {
             var requestData = {
@@ -195,27 +196,60 @@
                 success: function (data) {
                     console.log('ajax call check home category product');
                     console.log(data.result);
+
                     //console.log(data.result.length);
                     var datalength = data.result.length;
                     var tmplt = "";
+                    var ratingPercent = 0;
                     for (var i = 0; i < datalength; i++) {
+
                         var res = data.result[i];
                         //console.log(res.DefaultPictureModel.ImageUrl);
                         //alert('1323')
+                        var ck = res.ReviewOverviewModel.RatingSum;
+                        var totalreview = res.ReviewOverviewModel.TotalReviews;
+
+                        if (ck != null && ck != 0 && ck != "undefine") {
+                            console.log(res.ReviewOverviewModel.RatingSum);
+                            console.log(res.ReviewOverviewModel.TotalReviews);
+                            
+                            ratingPercent = ((ck * 100) / totalreview) / 5;
+
+
+                        }
                         var template = '<div class=item-box>'
                             + '<div class=' + 'product-item' + 'data-productid=' + res.Id + '>'
                             + '<div class=picture>'
-                            + '<a href=' + '"' + '/' + res.SeName + '"' + 'title=' + '"' + res.DefaultPictureModel.Title +'"' + '>'                          
+                            + '<a href=' + '"' + '/' + res.SeName + '"' + 'title=' + '"' + res.DefaultPictureModel.Title + '"' + '>'
                             + '<img src=' + '"' + res.DefaultPictureModel.ImageUrl + '"' + 'style=width:283px' + '>'
                             + '</a>'
                             + '</div>'
+                            + '<div class=' + 'details' + '>' + '<h2 class=' + 'product-title' + ' >' /*+ '<a href=' + '/' + res.SeName + '>'+'sa'+  '</a>'*/ + '<a href=' + '"' + '/' + res.SeName + '"' + '>' + res.SeName + '</a>' + '</h2> '
+                            + '<div class=' + 'product-rating-box' + ' ' + 'title=' + '"' + res.DefaultPictureModel.Title + '"' + '>'
+                            + '<div class=' + 'rating' + '>'
+                            + '<div style=width:'+ratingPercent+'%>'
+                            + '</div>'
+                            + '</div>'
+                            + '</div>'
+
+                            + '<div class=' + 'description' + '>'
+                            + '</div>'
+
+                            + '<div class=' + 'add-info' + '>'
+                            + '<div class=' + 'prices' + '>' + '<span class=price actual-price>' + res.ProductPrice.Price + '</span>'
+                            + '</div>'
+                            + '<div class=buttons>' + '<input type=' + 'button' + ' ' + 'value=' + '"' + 'Add to chart' + '"' + 'class=' + '"' + 'button-2 product-box-add-to-cart-button' + '"' + 'onclick=' + '"' + 'addctohart();' + '"' + '>'
+                            + '</div>'
+                            + '</div>'
+
+                            + '</div > '
                             + '</div>'
                             + '</div>';
                         console.log(template);
                         tmplt = tmplt + template;
                     }
                     console.log(tmplt);
-                    $(".item-grid").html(tmplt); 
+                    $(".item-grid").html(tmplt);
                     //console.log(data.result[0].Name);
                     //console.log(data.result[0].SeName);
                     //console.log(data.result[0].PictureModel);
@@ -274,6 +308,12 @@
         });
 
     });
+    function addctohart() {
+        //var p = pera;
+        alert("done");
+        //location.href = ""
+
+    }
 </script>
 
 
