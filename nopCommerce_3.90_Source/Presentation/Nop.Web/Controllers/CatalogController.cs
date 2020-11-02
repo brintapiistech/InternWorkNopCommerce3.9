@@ -135,14 +135,22 @@ namespace Nop.Web.Controllers
 
         public virtual JsonResult Categorylite(int categoryId, string searchtxt)
         {
+            //int min = 0, max = 0;
+
             CatalogPagingFilteringModel cmd = new CatalogPagingFilteringModel();
             var category = _categoryService.GetCategoryById(categoryId);
             //model
-            var ct = category.Name == searchtxt;
+          
             var models = _catalogModelFactory.PrepareCategoryModel(category, cmd);
             string lowerstr2 = searchtxt.ToLower();
-            var getdata = models.Products.Where(p => p.Name.ToLower().Contains(lowerstr2.ToLower()));
-           
+            var getdata = models.Products.Where(p => p.Name.ToLower().Contains (lowerstr2.ToLower()));
+
+            //if (Minimum != 0 && Maximum != 0)
+            //{
+            //    var searchvalue = getdata.Where(p => p.ProductPrice.PriceValue >= Minimum && Maximum <= p.ProductPrice.PriceValue);
+
+            //}
+
             //var itm = (from item in models
             //           where item.sename == Search
             //           select item).First();

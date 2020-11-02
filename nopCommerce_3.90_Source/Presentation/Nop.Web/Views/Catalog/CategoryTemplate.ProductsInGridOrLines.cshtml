@@ -127,18 +127,18 @@
             @Html.Partial("_CatalogSelectors", Model.PagingFilteringContext, new ViewDataDictionary())
         }
         @Html.Widget("categorydetails_before_filters", Model.Id)
-        <div class="product-filters">
+        @*<div class="product-filters">
 
-            @if (Model.PagingFilteringContext.PriceRangeFilter.Enabled)
-            {
-                @Html.Partial("_FilterPriceBox", Model.PagingFilteringContext.PriceRangeFilter, new ViewDataDictionary())
-            }
+                @if (Model.PagingFilteringContext.PriceRangeFilter.Enabled)
+                {
+                    @Html.Partial("_FilterPriceBox", Model.PagingFilteringContext.PriceRangeFilter, new ViewDataDictionary())
+                }
 
-            @if (Model.PagingFilteringContext.SpecificationFilter.Enabled)
-            {
-                @Html.Partial("_FilterSpecsBox", Model.PagingFilteringContext.SpecificationFilter, new ViewDataDictionary())
-            }
-        </div>
+                @if (Model.PagingFilteringContext.SpecificationFilter.Enabled)
+                {
+                    @Html.Partial("_FilterSpecsBox", Model.PagingFilteringContext.SpecificationFilter, new ViewDataDictionary())
+                }
+            </div>*@
         @Html.Widget("categorydetails_before_product_list", Model.Id)
 
         @if (Model.Products.Count > 0)
@@ -228,7 +228,7 @@
                             + '<img src=' + '"' + res.DefaultPictureModel.ImageUrl + '"' + 'style=width:283px' + '>'
                             + '</a>'
                             + '</div>'
-                            + '<div class=' + 'details' + '>' + '<h2 class=' + 'product-title' + ' >' /*+ '<a href=' + '/' + res.SeName + '>'+'sa'+  '</a>'*/ + '<a href=' + '"' + '/' + res.SeName + '"' + '>' + res.SeName + '</a>' + '</h2> '
+                            + '<div class=' + 'details' + '>' + '<h2 class=' + 'product-title' + ' >' /*+ '<a href=' + '/' + res.SeName + '>'+'sa'+  '</a>'*/ + '<a href=' + '"' + '/' + res.SeName + '"' + '>' + res.Name + '</a>' + '</h2> '
                             + '<div class=' + 'product-rating-box' + ' ' + 'title=' + '"' + res.DefaultPictureModel.Title + '"' + '>'
                             + '<div class=' + 'rating' + '>'
                             + '<div style=width:'+ratingPercent+'%>'
@@ -242,7 +242,8 @@
                             + '<div class=' + 'add-info' + '>'
                             + '<div class=' + 'prices' + '>' + '<span class=price actual-price>' + res.ProductPrice.Price + '</span>'
                             + '</div>'
-                            + '<div class=buttons>' + '<input type=' + 'button' + ' ' + 'value=' + '"' + 'Add to chart' + '"' + 'class=' + '"' + 'button-2 product-box-add-to-cart-button' + '"' + 'onclick=' + '"' + 'AddToCartFunc(2);' + '"' + '>'
+                            + '<div class=buttons>' + '<input type=' + 'button' + ' ' + 'value=' + '"' + 'Add to chart' + '"' + 'class=' + '"' + 'button-2 product-box-add-to-cart-button' + '"' + 'onclick=' + '"' + 'AddToCartFunc(' + res.Id + ');' + '"' + '>'
+                            + '<input type=' + 'button' + ' ' + 'value=' + '"' + 'Add to chart' + '"' + 'class=' + '"' + 'button-2 add-to-wishlist-button' + '"' + 'onclick=' + '"' + 'AddToCartFuncWishlist(' + res.Id + ');' + '"' + '>'
                             + '</div>'
                             + '</div>'
                             + '</div > '
@@ -341,7 +342,62 @@
                 }
             });
         }
+    var AddToCartFuncWishlist = function (pId) {
+            var requestData = {
+                productId: pId,
+                shoppingCartTypeId: 2,
+                quantity: 1,
+                forceredirection: false,
+            };
+            $.ajax({
+                url: "/ShoppingCart/AddProductToCart_Catalog",
+                type: 'POST',
+                data: JSON.stringify(requestData),
+                dataType: 'json',
+                contentType: 'application/json; charset=utf-8',
+                success: function (data) {
 
+                    console.log('ajax call add to Wishlist');
+                    console.log(data);
+                    console.log(data.updatetopwishlistsectionhtml);
+                    var totalwish = data.updatetopwishlistsectionhtml;
+                    $("bar-notification").show();
+                    alert('added to Wishlist');
+                    var templt = '<ui>'
+                        + '<li>'
+                        + '<a href=' + '"' + '/register"' + 'class=' + '"ico-register"' + '>' +'Register'
+                        + '</li>'
+                        + '<li>'
+                        + '<a href=' + '"' + '/login"' + 'class=' + '"ico-login"' + '>' + 'Log in'
+                        + '</li>'
+                        + '<li>'
+                        + '<a href=' + '"' + '/Wishlist"' + 'class=' + '"ico-wishlist"' + '>'
+                        + '<span class=wishlist-label>' + 'Wishlist' + '</span>'
+                        + '<span class=wishlist-qty>' + totalwish  +'</span>'
+                        + '</a>'
+                        + '</li>'
+                        + '<li id=topcartlink>'
+                        + '<a href=' + '"' + '/cart"' + 'class=' + '"ico-cart"' + '>'
+                        + '<span class=cart-label>' + 'Shopping cart' + '</span>'
+                        + '<span class=cart-qty>' + '</span>'
+                        + '</a>'
+                        + '</li>'
+                        + '</ui>'
+                    $(".header-links").html(templt);
+                    //$(".wish").html(+ '<li>'
+                    //    + '<a href=' + '"' + '/Wishlist"' + 'class=' + '"ico-wishlist"' + '>'
+                    //    + '<span class=wishlist-label>' + 'Wishlist' + '</span>'
+                    //    + '<span class=wishlist-qty>' + totalwish + '</span>'
+                    //    + '</a>'
+                    //    + '</li>');
+                },
+                error: function () {
+                    alert("Error!");
+                }
+            });
+        }
+
+        //< a href = "/register" class="ico-register" > Register</a >
 </script>
 
 

@@ -17,18 +17,14 @@
             }
         </div>
     }
-    @*sorting*@
-    @*@using (Html.BeginForm("", "", FormMethod.Get, new { }))
-    {
+<div style="border:solid 1px">
+    <span>Price:</span>
+    <input type="text" value="" placeholder="Min" class="" size="3" id="minimum" />-
+    <input type="text" value="" placeholder="Max" size="3" id="maximum" />
+    <button type="button" class="btn btn-danger btn-sm" id="PriceSearch" style="height: 35px;"> Ok </button>
 
-        <div class="form-group">
-            <input type="text" ID="text_serch" CssClass="form-control  col-md-2 " placeholder="Search" />
+</div>
 
-            <input type="submit" value="Search" class="btn btn-default" />
-
-        </div>
-
-    }*@
     @if (Model.AllowProductSorting)
     {
         <div class="product-sorting">
@@ -46,3 +42,35 @@
         </div>
     }
 </div>
+<script>
+   $(document).ready(function () {
+       $("#PriceSearch").click(function () {
+           var requestData = {
+                categoryId:0,
+                Minimum: $("#minimum").val(),
+                Maximum: $("#maximum").val(),
+            };
+
+            $.ajax({
+                url: "/Catalog/Categorylite",
+                type: 'POST',
+                data: JSON.stringify(requestData),
+                dataType: 'json',
+                contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+                    console.log('ajax call check home category product');
+                    console.log(data.result);
+
+
+
+
+                },
+                error: function () {
+                    alert("Error!");
+                }
+            });
+        });
+
+    });
+
+</script>

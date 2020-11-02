@@ -24,12 +24,15 @@
         }
         @if (Model.WishlistEnabled)
         {
-            <li>
-                <a href="@Url.RouteUrl("Wishlist")" class="ico-wishlist">
-                    <span class="wishlist-label">@T("Wishlist")</span>
-                    <span class="wishlist-qty">@T("Wishlist.HeaderQuantity", Model.WishlistItems)</span>
-                </a>
-            </li>
+
+        <li id="wish">
+            <a href="@Url.RouteUrl("Wishlist")" class="ico-wishlist">
+                <span class="wishlist-label">@T("Wishlist")</span>
+                <span class="wishlist-qty">@T("Wishlist.HeaderQuantity", Model.WishlistItems)</span>
+            </a>
+        </li>
+   
+
         }
         @if (Model.ShoppingCartEnabled)
         {
