@@ -690,7 +690,18 @@ namespace Nop.Web.Controllers
                     }
             }
         }
-
+        public virtual JsonResult Add2Wish()
+        {
+             _workContext.CurrentCustomer.ShoppingCartItems.Where(sci => sci.ShoppingCartType == ShoppingCartType.Wishlist)
+                                                            .LimitPerStore(_storeContext.CurrentStore.Id).ToList().GetTotalProducts();
+            var a = _localizationService.GetResource("Wishlist.HeaderQuantity");
+            var result = new
+            {
+                text="added",
+                index = a
+            };
+            return Json(result,JsonRequestBehavior.AllowGet);
+        }
         //add product to cart using AJAX
         //currently we use this method on the product details pages
         [HttpPost]

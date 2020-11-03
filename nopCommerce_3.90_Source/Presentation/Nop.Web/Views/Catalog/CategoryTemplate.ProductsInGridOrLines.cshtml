@@ -18,7 +18,7 @@
 
     var breadcrumbDelimiter = EngineContext.Current.Resolve<CommonSettings>().BreadcrumbDelimiter;
 }
-
+<script src="~/Scripts/public.common.js"></script>
 @using Nop.Core.Domain.Common;
 @using Nop.Core.Domain.Seo;
 @using Nop.Core.Infrastructure;
@@ -170,7 +170,12 @@
 <script>
 
     $(document).ready(function () {
+        var setLoadWaiting = function (display) {
+            displayAjaxLoading(display);
+            this.loadWaiting = display;
+        }
         $("#search").click(function () {
+            $(".price-filter").toggle();
             var requestData = {
                 categoryId: @(Model.Id),
                 searchtxt: $("#small-searchterms-category").val(),
@@ -242,13 +247,14 @@
                             + '<div class=' + 'add-info' + '>'
                             + '<div class=' + 'prices' + '>' + '<span class=price actual-price>' + res.ProductPrice.Price + '</span>'
                             + '</div>'
-                            + '<div class=buttons>' + '<input type=' + 'button' + ' ' + 'value=' + '"' + 'Add to chart' + '"' + 'class=' + '"' + 'button-2 product-box-add-to-cart-button' + '"' + 'onclick=' + '"' + 'AddToCartFunc(' + res.Id + ');' + '"' + '>'
+                            + '<div class=buttons>'
+                            + '<input type=' + 'button' + ' ' + 'value=' + '"' + 'Add to chart' + '"' + 'class=' + '"' + 'button-2 product-box-add-to-cart-button' + '"' + 'onclick=' + '"' + 'AddToCartFunc(' + res.Id + ');' + '"' + '>'
                             + '<input type=' + 'button' + ' ' + 'value=' + '"' + 'Add to chart' + '"' + 'class=' + '"' + 'button-2 add-to-wishlist-button' + '"' + 'onclick=' + '"' + 'AddToCartFuncWishlist(' + res.Id + ');' + '"' + '>'
                             + '</div>'
                             + '</div>'
                             + '</div > '
                             + '</div>'
-                            + '</div>';
+                            + '</div>'
                         console.log(template);
                         tmplt = tmplt + template;
                     }
@@ -312,12 +318,6 @@
         });
 
     });
-    function addctohart() {
-        //var p = pera;
-        alert("done");
-        //location.href = ""
-
-    }
 
         var AddToCartFunc = function (pId) {
             var requestData = {
@@ -336,6 +336,7 @@
                     console.log('ajax call add to cart');
                     console.log('added to cart');
                     alert('added to cart');
+                    
                 },
                 error: function () {
                     alert("Error!");
@@ -344,10 +345,11 @@
         }
     var AddToCartFuncWishlist = function (pId) {
             var requestData = {
-                productId: pId,
+                productId: 3,
                 shoppingCartTypeId: 2,
                 quantity: 1,
                 forceredirection: false,
+                wishList: $(".wishlist-qty").val()
             };
             $.ajax({
                 url: "/ShoppingCart/AddProductToCart_Catalog",
@@ -356,13 +358,13 @@
                 dataType: 'json',
                 contentType: 'application/json; charset=utf-8',
                 success: function (data) {
-
                     console.log('ajax call add to Wishlist');
                     console.log(data);
-                    console.log(data.updatetopwishlistsectionhtml);
-                    var totalwish = data.updatetopwishlistsectionhtml;
-                    $("bar-notification").show();
                     alert('added to Wishlist');
+                    $(".wishlist-qty").html(data.updatetopwishlistsectionhtml);
+                    //$("#bar-notification").append();
+                    console.log(data.updatetopwishlistsectionhtml);
+                    displayPopupNotification(data.message, 'success', true);
                     //var templt = '<ui>'
                     //    + '<li>'
                     //    + '<a href=' + '"' + '/register"' + 'class=' + '"ico-register"' + '>' +'Register'
