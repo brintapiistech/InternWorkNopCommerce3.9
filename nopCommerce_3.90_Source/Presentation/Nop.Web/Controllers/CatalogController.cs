@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using Microsoft.Ajax.Utilities;
 using Nop.Core;
 using Nop.Core.Domain.Catalog;
 using Nop.Core.Domain.Customers;
@@ -133,9 +135,10 @@ namespace Nop.Web.Controllers
             return View(templateViewPath, model);
         }
 
-        public virtual JsonResult Categorylite(int categoryId, string searchtxt)
+        public virtual JsonResult Categorylite(int categoryId, string searchtxt,int? Minimum, int? Maximum)
         {
-            //int min = 0, max = 0;
+
+            var result1 = new object();
 
             CatalogPagingFilteringModel cmd = new CatalogPagingFilteringModel();
             var category = _categoryService.GetCategoryById(categoryId);
@@ -145,11 +148,16 @@ namespace Nop.Web.Controllers
             string lowerstr2 = searchtxt.ToLower();
             var getdata = models.Products.Where(p => p.Name.ToLower().Contains (lowerstr2.ToLower()));
 
-            //if (Minimum != 0 && Maximum != 0)
-            //{
-            //    var searchvalue = getdata.Where(p => p.ProductPrice.PriceValue >= Minimum && Maximum <= p.ProductPrice.PriceValue);
+            if (Minimum != null && Maximum != null)
+            {
+                
+                result1 = getdata.Where(p => p.ProductPrice.PriceValue >= Minimum && p.ProductPrice.PriceValue <= Maximum);
 
-            //}
+            }
+            else
+            {
+                result1 = getdata;
+            }
 
             //var itm = (from item in models
             //           where item.sename == Search
@@ -159,7 +167,7 @@ namespace Nop.Web.Controllers
 
             var result = new
             {
-                result = getdata
+                result = result1
             };
 
             //template

@@ -175,7 +175,7 @@
             this.loadWaiting = display;
         }
         $("#search").click(function () {
-            $(".price-filter").toggle();
+            $(".price-filter").show();
             var requestData = {
                 categoryId: @(Model.Id),
                 searchtxt: $("#small-searchterms-category").val(),
@@ -317,6 +317,87 @@
             });
         });
 
+        $("#PriceSearch").click(function () {
+            var requestData = {
+                categoryId: @(Model.Id),
+                searchtxt: $("#small-searchterms-category").val(),
+
+                Minimum: $("#minimum").val(),
+                Maximum: $("#maximum").val(),
+            };
+
+            $.ajax({
+                url: "/Catalog/Categorylite",
+                type: 'POST',
+                data: JSON.stringify(requestData),
+                dataType: 'json',
+                contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+                    console.log('ajax call check home category product');
+                    console.log(data.result);
+
+                    var datalength = data.result.length;
+                    var tmplt = "";
+                    var ratingPercent = 0;
+                    for (var i = 0; i < datalength; i++) {
+
+                        var res = data.result[i];
+
+                        //console.log(res.DefaultPictureModel.ImageUrl);
+                        //alert('1323')
+                        var ck = res.ReviewOverviewModel.RatingSum;
+                        var totalreview = res.ReviewOverviewModel.TotalReviews;
+
+                        if (ck != null && ck != 0 && ck != "undefine") {
+                            console.log(res.ReviewOverviewModel.RatingSum);
+                            console.log(res.ReviewOverviewModel.TotalReviews);
+
+                            ratingPercent = ((ck * 100) / totalreview) / 5;
+
+
+                        }
+                        var template = '<div class=item-box>'
+                            + '<div class=' + 'product-item' + 'data-productid=' + res.Id + '>'
+                            + '<div class=picture>'
+                            + '<a href=' + '"' + '/' + res.SeName + '"' + 'title=' + '"' + res.DefaultPictureModel.Title + '"' + '>'
+                            + '<img src=' + '"' + res.DefaultPictureModel.ImageUrl + '"' + 'style=width:283px' + '>'
+                            + '</a>'
+                            + '</div>'
+                            + '<div class=' + 'details' + '>' + '<h2 class=' + 'product-title' + ' >' /*+ '<a href=' + '/' + res.SeName + '>'+'sa'+  '</a>'*/ + '<a href=' + '"' + '/' + res.SeName + '"' + '>' + res.Name + '</a>' + '</h2> '
+                            + '<div class=' + 'product-rating-box' + ' ' + 'title=' + '"' + res.DefaultPictureModel.Title + '"' + '>'
+                            + '<div class=' + 'rating' + '>'
+                            + '<div style=width:' + ratingPercent + '%>'
+                            + '</div>'
+                            + '</div>'
+                            + '</div>'
+
+                            + '<div class=' + 'description' + '>'
+                            + '</div>'
+
+                            + '<div class=' + 'add-info' + '>'
+                            + '<div class=' + 'prices' + '>' + '<span class=price actual-price>' + res.ProductPrice.Price + '</span>'
+                            + '</div>'
+                            + '<div class=buttons>'
+                            + '<input type=' + 'button' + ' ' + 'value=' + '"' + 'Add to chart' + '"' + 'class=' + '"' + 'button-2 product-box-add-to-cart-button' + '"' + 'onclick=' + '"' + 'AddToCartFunc(' + res.Id + ');' + '"' + '>'
+                            + '<input type=' + 'button' + ' ' + 'value=' + '"' + 'Add to chart' + '"' + 'class=' + '"' + 'button-2 add-to-wishlist-button' + '"' + 'onclick=' + '"' + 'AddToCartFuncWishlist(' + res.Id + ');' + '"' + '>'
+                            + '</div>'
+                            + '</div>'
+                            + '</div > '
+                            + '</div>'
+                            + '</div>'
+                        console.log(template);
+                        tmplt = tmplt + template;
+                    }
+                    console.log(tmplt);
+                    $(".item-grid").html(tmplt);
+
+
+                },
+                error: function () {
+                    alert("Error!");
+                }
+            });
+        });
     });
 
         var AddToCartFunc = function (pId) {
@@ -333,10 +414,13 @@
                 dataType: 'json',
                 contentType: 'application/json; charset=utf-8',
                 success: function (data) {
-                    console.log('ajax call add to cart');
+                    $(".cart-qty").html(data.updatetopcartsectionhtml);
+
+                    displayBarNotification(data.message, 'success', 3500);
+                    console.log(data);
                     console.log('added to cart');
                     alert('added to cart');
-                    
+
                 },
                 error: function () {
                     alert("Error!");
@@ -349,7 +433,6 @@
                 shoppingCartTypeId: 2,
                 quantity: 1,
                 forceredirection: false,
-                wishList: $(".wishlist-qty").val()
             };
             $.ajax({
                 url: "/ShoppingCart/AddProductToCart_Catalog",
@@ -364,7 +447,7 @@
                     $(".wishlist-qty").html(data.updatetopwishlistsectionhtml);
                     //$("#bar-notification").append();
                     console.log(data.updatetopwishlistsectionhtml);
-                    displayPopupNotification(data.message, 'success', true);
+                    displayBarNotification(data.message, 'success', 3500);
                     //var templt = '<ui>'
                     //    + '<li>'
                     //    + '<a href=' + '"' + '/register"' + 'class=' + '"ico-register"' + '>' +'Register'
