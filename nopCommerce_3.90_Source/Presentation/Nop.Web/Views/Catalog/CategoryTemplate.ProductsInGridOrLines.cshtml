@@ -111,16 +111,22 @@
                 <div class="title">
                     <strong>@T("Products.FeaturedProducts")</strong>
                 </div>
+
                 <div class="item-grid">
+
                     @foreach (var item in Model.FeaturedProducts)
                     {
                         <div class="item-box">
                             @Html.Partial("_ProductBox", item)
                         </div>
                     }
+                   
                 </div>
-            </div>
+                 <h1>asuiuasyda</h1>
+            </div> 
+
         }
+
         @Html.Widget("categorydetails_after_featured_products", Model.Id)
         @if (Model.Products.Count > 0)
         {
@@ -129,16 +135,16 @@
         @Html.Widget("categorydetails_before_filters", Model.Id)
         @*<div class="product-filters">
 
-                @if (Model.PagingFilteringContext.PriceRangeFilter.Enabled)
-                {
-                    @Html.Partial("_FilterPriceBox", Model.PagingFilteringContext.PriceRangeFilter, new ViewDataDictionary())
-                }
+            @if (Model.PagingFilteringContext.PriceRangeFilter.Enabled)
+            {
+                @Html.Partial("_FilterPriceBox", Model.PagingFilteringContext.PriceRangeFilter, new ViewDataDictionary())
+            }
 
-                @if (Model.PagingFilteringContext.SpecificationFilter.Enabled)
-                {
-                    @Html.Partial("_FilterSpecsBox", Model.PagingFilteringContext.SpecificationFilter, new ViewDataDictionary())
-                }
-            </div>*@
+            @if (Model.PagingFilteringContext.SpecificationFilter.Enabled)
+            {
+                @Html.Partial("_FilterSpecsBox", Model.PagingFilteringContext.SpecificationFilter, new ViewDataDictionary())
+            }
+        </div>*@
         @Html.Widget("categorydetails_before_product_list", Model.Id)
 
         @if (Model.Products.Count > 0)
@@ -168,14 +174,35 @@
 </div>
 
 <script>
+    $(function () {
+        $(".ajax-loading-block-window").addClass('hide');
+        $(document).bind('ajaxStart', function () {
+            $(".ajax-loading-block-window").show();
+        });
+        $(document).bind('ajaxStop', function () {
+            $(".ajax-loading-block-window").hide();
+        });
 
+    });
+
+
+
+
+    //var setLoadWaiting = function (display) {
+    //    displayAjaxLoading(display);
+    //    this.loadWaiting = display;
+    //}
+    //function displayAjaxLoading(display) {
+    //    if (display) {
+    //        $('.ajax-loading-block-window').show();
+    //    }
+    //    else {
+    //        $('.ajax-loading-block-window').hide('slow');
+    //    }
+    //}
     $(document).ready(function () {
-        var setLoadWaiting = function (display) {
-            displayAjaxLoading(display);
-            this.loadWaiting = display;
-        }
+
         $("#search").click(function () {
-            $(".price-filter").show();
             var requestData = {
                 categoryId: @(Model.Id),
                 searchtxt: $("#small-searchterms-category").val(),
@@ -207,11 +234,21 @@
                     //console.log(data.result.length);
 
                     var datalength = data.result.length;
+                    if (datalength == 0) {
+                        $(".datafound").show();
+                        $(".price-filter").hide();
+                    }
+                    else {
+                        $(".price-filter").show();
+                        $(".datafound").hide();
+                    }
                     var tmplt = "";
                     var ratingPercent = 0;
                     for (var i = 0; i < datalength; i++) {
 
                         var res = data.result[i];
+
+                        console.log(res.SeName);
 
                         //console.log(res.DefaultPictureModel.ImageUrl);
                         //alert('1323')
@@ -313,18 +350,24 @@
                 },
                 error: function () {
                     alert("Error!");
-                }
+                },
+              
             });
         });
 
         $("#PriceSearch").click(function () {
-            var requestData = {
+            var min, max;
+            min = $("#minimum").val();
+            max = $("#maximum").val();
+            if (min != "" && max !="")
+            {
+                 var requestData = {
                 categoryId: @(Model.Id),
                 searchtxt: $("#small-searchterms-category").val(),
 
                 Minimum: $("#minimum").val(),
                 Maximum: $("#maximum").val(),
-            };
+                   };
 
             $.ajax({
                 url: "/Catalog/Categorylite",
@@ -337,6 +380,12 @@
                     console.log(data.result);
 
                     var datalength = data.result.length;
+                    if (datalength == 0) {
+                        $(".datafound").show();
+                    }
+                    else {
+                        $(".datafound").hide();
+                    }
                     var tmplt = "";
                     var ratingPercent = 0;
                     for (var i = 0; i < datalength; i++) {
@@ -353,7 +402,6 @@
                             console.log(res.ReviewOverviewModel.TotalReviews);
 
                             ratingPercent = ((ck * 100) / totalreview) / 5;
-
 
                         }
                         var template = '<div class=item-box>'
@@ -396,11 +444,22 @@
                 error: function () {
                     alert("Error!");
                 }
-            });
+             });
+
+
+
+            }
+            else
+            {
+
+
+                alert("Please entry minimum amd maximum price !");
+            }
         });
     });
 
-        var AddToCartFunc = function (pId) {
+    var AddToCartFunc = function(pId) {
+
             var requestData = {
                 productId: pId,
                 shoppingCartTypeId: 1,
@@ -414,17 +473,27 @@
                 dataType: 'json',
                 contentType: 'application/json; charset=utf-8',
                 success: function (data) {
-                    $(".cart-qty").html(data.updatetopcartsectionhtml);
+                    if (data.success == true) {
+                     $(".cart-qty").html(data.updatetopcartsectionhtml);
+                        displayBarNotification(data.message, 'success', 3500);
+                        $("#flyout-cart").replaceWith(data.updateflyoutcartsectionhtml)
+                    }
+                    else {
+                           location.href = data.redirect;
+                    }
+                    //console.log(data.redirect);
+                    //location.href = "/Employee/getallemployees"
+                  
 
-                    displayBarNotification(data.message, 'success', 3500);
                     console.log(data);
-                    console.log('added to cart');
-                    alert('added to cart');
+                    //console.log('added to cart');
+                    //alert('added to cart');
 
                 },
                 error: function () {
                     alert("Error!");
                 }
+
             });
         }
     var AddToCartFuncWishlist = function (pId) {
@@ -443,7 +512,7 @@
                 success: function (data) {
                     console.log('ajax call add to Wishlist');
                     console.log(data);
-                    alert('added to Wishlist');
+                    //alert('added to Wishlist');
                     $(".wishlist-qty").html(data.updatetopwishlistsectionhtml);
                     //$("#bar-notification").append();
                     console.log(data.updatetopwishlistsectionhtml);
