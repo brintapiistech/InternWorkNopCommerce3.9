@@ -142,6 +142,7 @@ namespace Nop.Web.Controllers
 
             CatalogPagingFilteringModel cmd = new CatalogPagingFilteringModel();
             var category = _categoryService.GetCategoryById(categoryId);
+
             //model
           
             var models = _catalogModelFactory.PrepareCategoryModel(category, cmd);
