@@ -76,15 +76,18 @@
 </div>
 <script>
     $(document).ready(function () {    
-        var url = "/ShoppingCart/Add2Wish"
+        var url = "/Catalog/CategoryliteVersion"
+        var requestInfo = {
+            categoryId : 3,
+        };
         $.ajax({
             url:url,
             type: 'POST',
-            //data: JSON.stringify(requestData),
+            data: JSON.stringify(requestInfo),
             dataType: 'json',
             contentType: 'application/json; charset=utf-8',
             success: function (data) {
-                console.log('ajax call check wish list');
+                console.log('ajax call check catalog');
                 console.log(data);
             },
             error: function () {
