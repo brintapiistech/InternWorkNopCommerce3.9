@@ -418,8 +418,7 @@ D:\Code_Interns\InternWorkNopCommerce_3.90\InternWorkNopCommerce3.9\nopCommerce_
 D:\Code_Interns\InternWorkNopCommerce_3.90\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Presentation\Nop.Web.Framework\obj\Debug\Nop.Web.Framework.csproj.CopyComplete
 D:\Code_Interns\InternWorkNopCommerce_3.90\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Presentation\Nop.Web.Framework\obj\Debug\Nop.Web.Framework.dll
 D:\Code_Interns\InternWorkNopCommerce_3.90\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Presentation\Nop.Web.Framework\obj\Debug\Nop.Web.Framework.pdb
-G:\Intern\Git_Intern_Work\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Presentation\Nop.Web.Framework\bin\Debug\Nop.Data.dll
-G:\Intern\Git_Intern_Work\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Presentation\Nop.Web.Framework\bin\Debug\Nop.Services.dll.config
+G:\Intern\Git_Intern_Work\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Presentation\Nop.Web.Framework\obj\Debug\Nop.Web.Framework.csprojAssemblyReference.cache
 G:\Intern\Git_Intern_Work\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Presentation\Nop.Web.Framework\bin\Debug\Nop.Web.Framework.dll.config
 G:\Intern\Git_Intern_Work\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Presentation\Nop.Web.Framework\bin\Debug\Nop.Web.Framework.dll
 G:\Intern\Git_Intern_Work\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Presentation\Nop.Web.Framework\bin\Debug\Nop.Web.Framework.pdb
@@ -435,6 +434,7 @@ G:\Intern\Git_Intern_Work\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Prese
 G:\Intern\Git_Intern_Work\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Presentation\Nop.Web.Framework\bin\Debug\Microsoft.Web.Infrastructure.dll
 G:\Intern\Git_Intern_Work\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Presentation\Nop.Web.Framework\bin\Debug\Newtonsoft.Json.dll
 G:\Intern\Git_Intern_Work\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Presentation\Nop.Web.Framework\bin\Debug\Nop.Core.dll
+G:\Intern\Git_Intern_Work\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Presentation\Nop.Web.Framework\bin\Debug\Nop.Data.dll
 G:\Intern\Git_Intern_Work\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Presentation\Nop.Web.Framework\bin\Debug\Nop.Services.dll
 G:\Intern\Git_Intern_Work\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Presentation\Nop.Web.Framework\bin\Debug\System.Linq.Dynamic.dll
 G:\Intern\Git_Intern_Work\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Presentation\Nop.Web.Framework\bin\Debug\System.Net.Http.Extensions.dll
@@ -468,6 +468,7 @@ G:\Intern\Git_Intern_Work\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Prese
 G:\Intern\Git_Intern_Work\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Presentation\Nop.Web.Framework\bin\Debug\Nop.Data.pdb
 G:\Intern\Git_Intern_Work\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Presentation\Nop.Web.Framework\bin\Debug\Nop.Data.dll.config
 G:\Intern\Git_Intern_Work\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Presentation\Nop.Web.Framework\bin\Debug\Nop.Services.pdb
+G:\Intern\Git_Intern_Work\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Presentation\Nop.Web.Framework\bin\Debug\Nop.Services.dll.config
 G:\Intern\Git_Intern_Work\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Presentation\Nop.Web.Framework\bin\Debug\Antlr3.Runtime.pdb
 G:\Intern\Git_Intern_Work\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Presentation\Nop.Web.Framework\bin\Debug\Autofac.xml
 G:\Intern\Git_Intern_Work\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Presentation\Nop.Web.Framework\bin\Debug\Autofac.Integration.Mvc.xml
@@ -553,7 +554,6 @@ G:\Intern\Git_Intern_Work\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Prese
 G:\Intern\Git_Intern_Work\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Presentation\Nop.Web.Framework\bin\Debug\zh-Hans\System.Spatial.resources.dll
 G:\Intern\Git_Intern_Work\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Presentation\Nop.Web.Framework\bin\Debug\zh-Hant\System.Spatial.resources.dll
 G:\Intern\Git_Intern_Work\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Presentation\Nop.Web.Framework\obj\Debug\Nop.Web.Framework.csproj.App.config
-G:\Intern\Git_Intern_Work\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Presentation\Nop.Web.Framework\obj\Debug\Nop.Web.Framework.csprojAssemblyReference.cache
 G:\Intern\Git_Intern_Work\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Presentation\Nop.Web.Framework\obj\Debug\Nop.Web.Framework.csproj.CoreCompileInputs.cache
 G:\Intern\Git_Intern_Work\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Presentation\Nop.Web.Framework\obj\Debug\Nop.Web.Framework.csproj.CopyComplete
 G:\Intern\Git_Intern_Work\InternWorkNopCommerce3.9\nopCommerce_3.90_Source\Presentation\Nop.Web.Framework\obj\Debug\Nop.Web.Framework.dll

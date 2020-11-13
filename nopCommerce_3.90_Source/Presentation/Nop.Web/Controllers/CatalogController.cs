@@ -128,7 +128,7 @@ namespace Nop.Web.Controllers
             _customerActivityService.InsertActivity("PublicStore.ViewCategory", _localizationService.GetResource("ActivityLog.PublicStore.ViewCategory"), category.Name);
 
             //model
-            var model = _catalogModelFactory.PrepareCategoryModel(category, command);
+            var model = _catalogModelFactory.PrepareCategoryModel(category);
 
             //template
             var templateViewPath = _catalogModelFactory.PrepareCategoryTemplateViewPath(category.CategoryTemplateId);
@@ -139,26 +139,31 @@ namespace Nop.Web.Controllers
         {
 
             var result1 = new object();
+            Category k = new Category();
+            List<Category> lt = new List<Category>();
 
-            CatalogPagingFilteringModel cmd = new CatalogPagingFilteringModel();
-            var category = _categoryService.GetCategoryById(categoryId);
-
+            //CatalogPagingFilteringModel cmd = new CatalogPagingFilteringModel();
+            var category = _categoryService.GetCategoryByIdtest(categoryId);
+            var models = _catalogModelFactory.PrepareCategoryModel(category);
             //model
-          
-            var models = _catalogModelFactory.PrepareCategoryModel(category, cmd);
-            string lowerstr2 = searchtxt.ToLower();
-            var getdata = models.Products.Where(p => p.Name.ToLower().Contains (lowerstr2.ToLower()));
 
-            if (Minimum != null && Maximum != null)
-            {
-                
-                result1 = getdata.Where(p => p.ProductPrice.PriceValue >= Minimum && p.ProductPrice.PriceValue <= Maximum);
+            var category1 = _categoryService.GetCategoryById(categoryId);
+            var model = _catalogModelFactory.PrepareCategoryModel(category1);
 
-            }
-            else
-            {
-                result1 = getdata;
-            }
+            //string lowerstr2 = searchtxt.ToLower();
+            //var getdata = models.Products.Where(p => p.Name.ToLower().Contains (lowerstr2.ToLower()));
+            //var v = models.Name;
+            //var v1 = models.Products.Select(p => p.Sku);
+            //if (Minimum != null && Maximum != null)
+            //{
+
+            //    result1 = getdata.Where(p => p.ProductPrice.PriceValue >= Minimum && p.ProductPrice.PriceValue <= Maximum);
+
+            //}
+            //else
+            //{
+            //    result1 = getdata;
+            //}
 
             //var itm = (from item in models
             //           where item.sename == Search
@@ -168,7 +173,7 @@ namespace Nop.Web.Controllers
 
             var result = new
             {
-                result = result1
+                result = category
             };
 
             //template

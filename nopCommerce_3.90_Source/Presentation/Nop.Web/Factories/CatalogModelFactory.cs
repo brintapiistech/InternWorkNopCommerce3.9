@@ -346,8 +346,10 @@ namespace Nop.Web.Factories
         /// <param name="category">Category</param>
         /// <param name="command">Catalog paging filtering command</param>
         /// <returns>Category model</returns>
-        public virtual CategoryModel PrepareCategoryModel(Category category, CatalogPagingFilteringModel command)
+        public virtual CategoryModel PrepareCategoryModel(Category category)
         {
+            CatalogPagingFilteringModel command = new CatalogPagingFilteringModel();
+
             if (category == null)
                 throw new ArgumentNullException("category");
 
@@ -1483,6 +1485,10 @@ namespace Nop.Web.Factories
             };
             return model;
         }
+
+ 
+
+
 
         #endregion
     }

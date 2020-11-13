@@ -14,7 +14,8 @@ namespace Nop.Services.Catalog
         /// </summary>
         /// <param name="category">Category</param>
         void DeleteCategory(Category category);
-
+        //List<Category> GetCategoryByIdtest(int categoryId);
+        Category GetCategoryByIdtest(int categoryId);
         /// <summary>
         /// Gets all categories
         /// </summary>
@@ -128,5 +129,6 @@ namespace Nop.Services.Catalog
         /// <param name="productIds">Products IDs</param>
         /// <returns>Category IDs for products</returns>
         IDictionary<int, int[]> GetProductCategoryIds(int[] productIds);
+
     }
 }

@@ -74,10 +74,11 @@
         </script>
     }
 </div>
-@*<script>
+<script>
     $(document).ready(function () {    
+        var url = "/ShoppingCart/Add2Wish"
         $.ajax({
-            url: "/ShoppingCart/Add2Wish",
+            url:url,
             type: 'POST',
             //data: JSON.stringify(requestData),
             dataType: 'json',
@@ -91,4 +92,4 @@
             }
         });
     });
-</script>*@
+</script>
