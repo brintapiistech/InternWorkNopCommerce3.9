@@ -37,7 +37,8 @@ namespace Nop.Web.Factories
         #endregion
 
         #region Categories
-        CategoryModel PrepareCategoryModel(Category category);
+        CategoryModel PrepareCategoryModelLite(List<Category> category);
+        CategoryModel PrepareCategoryModel(Category category, CatalogPagingFilteringModel command);
         /// <summary>
         /// Prepare category model
         /// </summary>

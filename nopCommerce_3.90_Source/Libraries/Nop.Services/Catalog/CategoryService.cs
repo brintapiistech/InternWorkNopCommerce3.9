@@ -393,21 +393,18 @@ namespace Nop.Services.Catalog
         /// <param name="categoryId">Category identifier</param>
         /// <returns>Category</returns>
         public virtual Category GetCategoryById(int categoryId)
-                {
+        {
             if (categoryId == 0)
                 return null;
             
             string key = string.Format(CATEGORIES_BY_ID_KEY, categoryId);
             return _cacheManager.Get(key, () => _categoryRepository.GetById(categoryId));
         }
-        public virtual Category  GetCategoryByIdtest(int categoryId)
+        public virtual IList<Category>  GetCategoryByIdtest(int categoryId)
         {
-            Category c = new Category();
-
             var a = from x in _categoryRepository.Table where x.Id == categoryId select x;
-            c.AllowCustomersToSelectPageSize=a
-           
-             return a;
+            var category = a.ToList();
+            return category;
         }
 
         /// <summary>

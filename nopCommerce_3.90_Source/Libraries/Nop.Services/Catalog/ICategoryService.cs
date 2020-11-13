@@ -15,7 +15,7 @@ namespace Nop.Services.Catalog
         /// <param name="category">Category</param>
         void DeleteCategory(Category category);
         //List<Category> GetCategoryByIdtest(int categoryId);
-        Category GetCategoryByIdtest(int categoryId);
+        IList<Category> GetCategoryByIdtest(int categoryId);
         /// <summary>
         /// Gets all categories
         /// </summary>
