@@ -146,6 +146,7 @@ namespace Nop.Web.Controllers
             var category = _categoryService.GetCategoryByIdtest(categoryId).ToList();
             var models = _catalogModelFactory.PrepareCategoryModelLite(category);
             //model
+<<<<<<< Updated upstream
 
             //var category1 = _categoryService.GetCategoryById(categoryId);
             //var model = _catalogModelFactory.PrepareCategoryModel(category1);
@@ -170,6 +171,18 @@ namespace Nop.Web.Controllers
             //           select item).First();
             ////var mm = model.SeName == Search;
             //var pp = from r in model where r.Sename = Search select r;
+=======
+          
+            var models = _catalogModelFactory.PrepareCategoryModel(category, cmd);
+            string lowerstr2 = searchtxt.ToLower();
+            var getdata = models.Products.Where(p => p.Name.ToLower().Contains (lowerstr2.ToLower()));
+            var v = models.Name;
+            var v1 = models.Products.Select(p => p.Sku);
+            if (Minimum != null && Maximum != null)
+            {
+                
+                result1 = getdata.Where(p => p.ProductPrice.PriceValue >= Minimum && p.ProductPrice.PriceValue <= Maximum);
+>>>>>>> Stashed changes
 
             var result = new
             {

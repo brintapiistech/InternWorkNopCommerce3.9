@@ -134,7 +134,12 @@ namespace Nop.Web.Factories
         /// <param name="command">Catalog paging filtering command</param>
         /// <returns>Vendor model</returns>
         VendorModel PrepareVendorModel(Vendor vendor, CatalogPagingFilteringModel command);
+<<<<<<< Updated upstream
     
+=======
+        object PrepareCategoryModel(Category category);
+
+>>>>>>> Stashed changes
         /// <summary>
         /// Prepare vendor all models
         /// </summary>

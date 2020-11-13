@@ -340,14 +340,386 @@ namespace Nop.Web.Factories
 
         #region Categories
 
+        public virtual CategoryModel PrepareCategoryModel_1(Category category)
+        {
+            CatalogPagingFilteringModel command = new CatalogPagingFilteringModel();
+            if (category == null)
+                throw new ArgumentNullException("category");
+
+            var model = new CategoryModel
+            {
+                Id = category.Id,
+                Name = category.GetLocalized(x => x.Name),
+                Description = category.GetLocalized(x => x.Description),
+                MetaKeywords = category.GetLocalized(x => x.MetaKeywords),
+                MetaDescription = category.GetLocalized(x => x.MetaDescription),
+                MetaTitle = category.GetLocalized(x => x.MetaTitle),
+                SeName = category.GetSeName(),
+            };
+
+            //sorting
+            PrepareSortingOptions(model.PagingFilteringContext, command);
+            //view mode
+            PrepareViewModes(model.PagingFilteringContext, command);
+            //page size
+            PreparePageSizeOptions(model.PagingFilteringContext, command,
+                category.AllowCustomersToSelectPageSize,
+                category.PageSizeOptions,
+                category.PageSize);
+
+            //price ranges
+            model.PagingFilteringContext.PriceRangeFilter.LoadPriceRangeFilters(category.PriceRanges, _webHelper, _priceFormatter);
+            var selectedPriceRange = model.PagingFilteringContext.PriceRangeFilter.GetSelectedPriceRange(_webHelper, category.PriceRanges);
+            decimal? minPriceConverted = null;
+            decimal? maxPriceConverted = null;
+            if (selectedPriceRange != null)
+            {
+                if (selectedPriceRange.From.HasValue)
+                    minPriceConverted = _currencyService.ConvertToPrimaryStoreCurrency(selectedPriceRange.From.Value, _workContext.WorkingCurrency);
+
+                if (selectedPriceRange.To.HasValue)
+                    maxPriceConverted = _currencyService.ConvertToPrimaryStoreCurrency(selectedPriceRange.To.Value, _workContext.WorkingCurrency);
+            }
+
+
+            //category breadcrumb
+            if (_catalogSettings.CategoryBreadcrumbEnabled)
+            {
+                model.DisplayCategoryBreadcrumb = true;
+
+                string breadcrumbCacheKey = string.Format(ModelCacheEventConsumer.CATEGORY_BREADCRUMB_KEY,
+                    category.Id,
+                    string.Join(",", _workContext.CurrentCustomer.GetCustomerRoleIds()),
+                    _storeContext.CurrentStore.Id,
+                    _workContext.WorkingLanguage.Id);
+                model.CategoryBreadcrumb = _cacheManager.Get(breadcrumbCacheKey, () =>
+                    category
+                    .GetCategoryBreadCrumb(_categoryService, _aclService, _storeMappingService)
+                    .Select(catBr => new CategoryModel
+                    {
+                        Id = catBr.Id,
+                        Name = catBr.GetLocalized(x => x.Name),
+                        SeName = catBr.GetSeName()
+                    })
+                    .ToList()
+                );
+            }
+
+
+
+            var pictureSize = _mediaSettings.CategoryThumbPictureSize;
+
+            //subcategories
+            string subCategoriesCacheKey = string.Format(ModelCacheEventConsumer.CATEGORY_SUBCATEGORIES_KEY,
+                category.Id,
+                pictureSize,
+                string.Join(",", _workContext.CurrentCustomer.GetCustomerRoleIds()),
+                _storeContext.CurrentStore.Id,
+                _workContext.WorkingLanguage.Id,
+                _webHelper.IsCurrentConnectionSecured());
+            model.SubCategories = _cacheManager.Get(subCategoriesCacheKey, () =>
+                _categoryService.GetAllCategoriesByParentCategoryId(category.Id)
+                .Select(x =>
+                {
+                    var subCatModel = new CategoryModel.SubCategoryModel
+                    {
+                        Id = x.Id,
+                        Name = x.GetLocalized(y => y.Name),
+                        SeName = x.GetSeName(),
+                        Description = x.GetLocalized(y => y.Description)
+                    };
+
+                    //prepare picture model
+                    var categoryPictureCacheKey = string.Format(ModelCacheEventConsumer.CATEGORY_PICTURE_MODEL_KEY, x.Id, pictureSize, true, _workContext.WorkingLanguage.Id, _webHelper.IsCurrentConnectionSecured(), _storeContext.CurrentStore.Id);
+                    subCatModel.PictureModel = _cacheManager.Get(categoryPictureCacheKey, () =>
+                    {
+                        var picture = _pictureService.GetPictureById(x.PictureId);
+                        var pictureModel = new PictureModel
+                        {
+                            FullSizeImageUrl = _pictureService.GetPictureUrl(picture),
+                            ImageUrl = _pictureService.GetPictureUrl(picture, pictureSize),
+                            Title = string.Format(_localizationService.GetResource("Media.Category.ImageLinkTitleFormat"), subCatModel.Name),
+                            AlternateText = string.Format(_localizationService.GetResource("Media.Category.ImageAlternateTextFormat"), subCatModel.Name)
+                        };
+                        return pictureModel;
+                    });
+
+                    return subCatModel;
+                })
+                .ToList()
+            );
+
+
+
+
+            //featured products
+            if (!_catalogSettings.IgnoreFeaturedProducts)
+            {
+                //We cache a value indicating whether we have featured products
+                IPagedList<Product> featuredProducts = null;
+                string cacheKey = string.Format(ModelCacheEventConsumer.CATEGORY_HAS_FEATURED_PRODUCTS_KEY, category.Id,
+                    string.Join(",", _workContext.CurrentCustomer.GetCustomerRoleIds()), _storeContext.CurrentStore.Id);
+                var hasFeaturedProductsCache = _cacheManager.Get<bool?>(cacheKey);
+                if (!hasFeaturedProductsCache.HasValue)
+                {
+                    //no value in the cache yet
+                    //let's load products and cache the result (true/false)
+                    featuredProducts = _productService.SearchProducts(
+                       categoryIds: new List<int> { category.Id },
+                       storeId: _storeContext.CurrentStore.Id,
+                       visibleIndividuallyOnly: true,
+                       featuredProducts: true);
+                    hasFeaturedProductsCache = featuredProducts.TotalCount > 0;
+                    _cacheManager.Set(cacheKey, hasFeaturedProductsCache, 60);
+                }
+                if (hasFeaturedProductsCache.Value && featuredProducts == null)
+                {
+                    //cache indicates that the category has featured products
+                    //let's load them
+                    featuredProducts = _productService.SearchProducts(
+                       categoryIds: new List<int> { category.Id },
+                       storeId: _storeContext.CurrentStore.Id,
+                       visibleIndividuallyOnly: true,
+                       featuredProducts: true);
+                }
+                if (featuredProducts != null)
+                {
+                    model.FeaturedProducts = _productModelFactory.PrepareProductOverviewModels(featuredProducts).ToList();
+                }
+            }
+
+
+            var categoryIds = new List<int>();
+            categoryIds.Add(category.Id);
+            if (_catalogSettings.ShowProductsFromSubcategories)
+            {
+                //include subcategories
+                categoryIds.AddRange(GetChildCategoryIds(category.Id));
+            }
+            //products
+            IList<int> alreadyFilteredSpecOptionIds = model.PagingFilteringContext.SpecificationFilter.GetAlreadyFilteredSpecOptionIds(_webHelper);
+            IList<int> filterableSpecificationAttributeOptionIds;
+            var products = _productService.SearchProducts(out filterableSpecificationAttributeOptionIds,
+                true,
+                categoryIds: categoryIds,
+                storeId: _storeContext.CurrentStore.Id,
+                visibleIndividuallyOnly: true,
+                featuredProducts: _catalogSettings.IncludeFeaturedProductsInNormalLists ? null : (bool?)false,
+                priceMin: minPriceConverted,
+                priceMax: maxPriceConverted,
+                filteredSpecs: alreadyFilteredSpecOptionIds,
+                orderBy: (ProductSortingEnum)command.OrderBy,
+                pageIndex: command.PageNumber - 1,
+                pageSize: command.PageSize);
+            model.Products = _productModelFactory.PrepareProductOverviewModels(products).ToList();
+
+            model.PagingFilteringContext.LoadPagedList(products);
+
+            //specs
+            model.PagingFilteringContext.SpecificationFilter.PrepareSpecsFilters(alreadyFilteredSpecOptionIds,
+                filterableSpecificationAttributeOptionIds != null ? filterableSpecificationAttributeOptionIds.ToArray() : null,
+                _specificationAttributeService,
+                _webHelper,
+                _workContext,
+                _cacheManager);
+
+            return model;
+        }
+
+        public virtual CategoryModel PrepareCategoryModel_2(Category category)
+        {
+            CatalogPagingFilteringModel command = new CatalogPagingFilteringModel();
+            if (category == null)
+                throw new ArgumentNullException("category");
+
+            var model = new CategoryModel
+            {
+                Id = category.Id,
+                Name = category.GetLocalized(x => x.Name),
+                Description = category.GetLocalized(x => x.Description),
+                MetaKeywords = category.GetLocalized(x => x.MetaKeywords),
+                MetaDescription = category.GetLocalized(x => x.MetaDescription),
+                MetaTitle = category.GetLocalized(x => x.MetaTitle),
+                SeName = category.GetSeName(),
+            };
+
+            //sorting
+            PrepareSortingOptions(model.PagingFilteringContext, command);
+            //view mode
+            PrepareViewModes(model.PagingFilteringContext, command);
+            //page size
+            PreparePageSizeOptions(model.PagingFilteringContext, command,
+                category.AllowCustomersToSelectPageSize,
+                category.PageSizeOptions,
+                category.PageSize);
+
+            //price ranges
+            model.PagingFilteringContext.PriceRangeFilter.LoadPriceRangeFilters(category.PriceRanges, _webHelper, _priceFormatter);
+            var selectedPriceRange = model.PagingFilteringContext.PriceRangeFilter.GetSelectedPriceRange(_webHelper, category.PriceRanges);
+            decimal? minPriceConverted = null;
+            decimal? maxPriceConverted = null;
+            if (selectedPriceRange != null)
+            {
+                if (selectedPriceRange.From.HasValue)
+                    minPriceConverted = _currencyService.ConvertToPrimaryStoreCurrency(selectedPriceRange.From.Value, _workContext.WorkingCurrency);
+
+                if (selectedPriceRange.To.HasValue)
+                    maxPriceConverted = _currencyService.ConvertToPrimaryStoreCurrency(selectedPriceRange.To.Value, _workContext.WorkingCurrency);
+            }
+
+
+            //category breadcrumb
+            if (_catalogSettings.CategoryBreadcrumbEnabled)
+            {
+                model.DisplayCategoryBreadcrumb = true;
+
+                string breadcrumbCacheKey = string.Format(ModelCacheEventConsumer.CATEGORY_BREADCRUMB_KEY,
+                    category.Id,
+                    string.Join(",", _workContext.CurrentCustomer.GetCustomerRoleIds()),
+                    _storeContext.CurrentStore.Id,
+                    _workContext.WorkingLanguage.Id);
+                model.CategoryBreadcrumb = _cacheManager.Get(breadcrumbCacheKey, () =>
+                    category
+                    .GetCategoryBreadCrumb(_categoryService, _aclService, _storeMappingService)
+                    .Select(catBr => new CategoryModel
+                    {
+                        Id = catBr.Id,
+                        Name = catBr.GetLocalized(x => x.Name),
+                        SeName = catBr.GetSeName()
+                    })
+                    .ToList()
+                );
+            }
+
+
+
+            var pictureSize = _mediaSettings.CategoryThumbPictureSize;
+
+            //subcategories
+            string subCategoriesCacheKey = string.Format(ModelCacheEventConsumer.CATEGORY_SUBCATEGORIES_KEY,
+                category.Id,
+                pictureSize,
+                string.Join(",", _workContext.CurrentCustomer.GetCustomerRoleIds()),
+                _storeContext.CurrentStore.Id,
+                _workContext.WorkingLanguage.Id,
+                _webHelper.IsCurrentConnectionSecured());
+            model.SubCategories = _cacheManager.Get(subCategoriesCacheKey, () =>
+                _categoryService.GetAllCategoriesByParentCategoryId(category.Id)
+                .Select(x =>
+                {
+                    var subCatModel = new CategoryModel.SubCategoryModel
+                    {
+                        Id = x.Id,
+                        Name = x.GetLocalized(y => y.Name),
+                        SeName = x.GetSeName(),
+                        Description = x.GetLocalized(y => y.Description)
+                    };
+
+                    //prepare picture model
+                    var categoryPictureCacheKey = string.Format(ModelCacheEventConsumer.CATEGORY_PICTURE_MODEL_KEY, x.Id, pictureSize, true, _workContext.WorkingLanguage.Id, _webHelper.IsCurrentConnectionSecured(), _storeContext.CurrentStore.Id);
+                    subCatModel.PictureModel = _cacheManager.Get(categoryPictureCacheKey, () =>
+                    {
+                        var picture = _pictureService.GetPictureById(x.PictureId);
+                        var pictureModel = new PictureModel
+                        {
+                            FullSizeImageUrl = _pictureService.GetPictureUrl(picture),
+                            ImageUrl = _pictureService.GetPictureUrl(picture, pictureSize),
+                            Title = string.Format(_localizationService.GetResource("Media.Category.ImageLinkTitleFormat"), subCatModel.Name),
+                            AlternateText = string.Format(_localizationService.GetResource("Media.Category.ImageAlternateTextFormat"), subCatModel.Name)
+                        };
+                        return pictureModel;
+                    });
+
+                    return subCatModel;
+                })
+                .ToList()
+            );
+
+
+
+
+            //featured products
+            if (!_catalogSettings.IgnoreFeaturedProducts)
+            {
+                //We cache a value indicating whether we have featured products
+                IPagedList<Product> featuredProducts = null;
+                string cacheKey = string.Format(ModelCacheEventConsumer.CATEGORY_HAS_FEATURED_PRODUCTS_KEY, category.Id,
+                    string.Join(",", _workContext.CurrentCustomer.GetCustomerRoleIds()), _storeContext.CurrentStore.Id);
+                var hasFeaturedProductsCache = _cacheManager.Get<bool?>(cacheKey);
+                if (!hasFeaturedProductsCache.HasValue)
+                {
+                    //no value in the cache yet
+                    //let's load products and cache the result (true/false)
+                    featuredProducts = _productService.SearchProducts(
+                       categoryIds: new List<int> { category.Id },
+                       storeId: _storeContext.CurrentStore.Id,
+                       visibleIndividuallyOnly: true,
+                       featuredProducts: true);
+                    hasFeaturedProductsCache = featuredProducts.TotalCount > 0;
+                    _cacheManager.Set(cacheKey, hasFeaturedProductsCache, 60);
+                }
+                if (hasFeaturedProductsCache.Value && featuredProducts == null)
+                {
+                    //cache indicates that the category has featured products
+                    //let's load them
+                    featuredProducts = _productService.SearchProducts(
+                       categoryIds: new List<int> { category.Id },
+                       storeId: _storeContext.CurrentStore.Id,
+                       visibleIndividuallyOnly: true,
+                       featuredProducts: true);
+                }
+                if (featuredProducts != null)
+                {
+                    model.FeaturedProducts = _productModelFactory.PrepareProductOverviewModels(featuredProducts).ToList();
+                }
+            }
+
+
+            var categoryIds = new List<int>();
+            categoryIds.Add(category.Id);
+            if (_catalogSettings.ShowProductsFromSubcategories)
+            {
+                //include subcategories
+                categoryIds.AddRange(GetChildCategoryIds(category.Id));
+            }
+            //products
+            IList<int> alreadyFilteredSpecOptionIds = model.PagingFilteringContext.SpecificationFilter.GetAlreadyFilteredSpecOptionIds(_webHelper);
+            IList<int> filterableSpecificationAttributeOptionIds;
+            var products = _productService.SearchProducts(out filterableSpecificationAttributeOptionIds,
+                true,
+                categoryIds: categoryIds,
+                storeId: _storeContext.CurrentStore.Id,
+                visibleIndividuallyOnly: true,
+                featuredProducts: _catalogSettings.IncludeFeaturedProductsInNormalLists ? null : (bool?)false,
+                priceMin: minPriceConverted,
+                priceMax: maxPriceConverted,
+                filteredSpecs: alreadyFilteredSpecOptionIds,
+                orderBy: (ProductSortingEnum)command.OrderBy,
+                pageIndex: command.PageNumber - 1,
+                pageSize: command.PageSize);
+            model.Products = _productModelFactory.PrepareProductOverviewModels(products).ToList();
+
+            model.PagingFilteringContext.LoadPagedList(products);
+
+            //specs
+            model.PagingFilteringContext.SpecificationFilter.PrepareSpecsFilters(alreadyFilteredSpecOptionIds,
+                filterableSpecificationAttributeOptionIds != null ? filterableSpecificationAttributeOptionIds.ToArray() : null,
+                _specificationAttributeService,
+                _webHelper,
+                _workContext,
+                _cacheManager);
+
+            return model;
+        }
         /// <summary>
         /// Prepare category model
         /// </summary>
         /// <param name="category">Category</param>
         /// <param name="command">Catalog paging filtering command</param>
         /// <returns>Category model</returns>
-        public virtual CategoryModel PrepareCategoryModel(Category category, CatalogPagingFilteringModel command)
+        public virtual CategoryModel PrepareCategoryModel(Category category)
         {
+            CatalogPagingFilteringModel command = new CatalogPagingFilteringModel();
             if (category == null)
                 throw new ArgumentNullException("category");
 

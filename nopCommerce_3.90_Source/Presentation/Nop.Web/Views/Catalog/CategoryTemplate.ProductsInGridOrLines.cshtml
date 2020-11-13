@@ -202,6 +202,42 @@
     //}
     $(document).ready(function () {
 
+        var requestdata = {
+            categoryId : 3
+        };
+            $.ajax({
+                url: "/Catalog/Categorylite_1",
+                type: 'POST',
+                data: JSON.stringify(requestdata),
+                dataType: 'json',
+                contentType: 'application/json; charset=utf-8',
+                success: function (data) {
+                    console.log('ajax call from Categorylite_1');
+                    console.log(data.result);
+                },
+                error: function () {
+                    alert("Error!");
+                }
+            });
+
+        var requestdata = {
+            categoryId: 3
+        };
+        $.ajax({
+            url: "/Catalog/Categorylite_2",
+            type: 'POST',
+            data: JSON.stringify(requestdata),
+            dataType: 'json',
+            contentType: 'application/json; charset=utf-8',
+            success: function (data) {
+                console.log('ajax call from Categorylite_2');
+                console.log(data.result);
+            },
+            error: function () {
+                alert("Error!");
+            }
+        });
+
         $("#search").click(function () {
             var requestData = {
                 categoryId: @(Model.Id),

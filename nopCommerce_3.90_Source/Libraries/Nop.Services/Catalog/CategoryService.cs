@@ -393,7 +393,7 @@ namespace Nop.Services.Catalog
         /// <param name="categoryId">Category identifier</param>
         /// <returns>Category</returns>
         public virtual Category GetCategoryById(int categoryId)
-        {
+                {
             if (categoryId == 0)
                 return null;
             
